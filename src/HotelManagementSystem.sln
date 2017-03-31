@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomOccupancy.Api", "RoomOccupancy.Api\RoomOccupancy.Api.csproj", "{06F5A0D2-C8C8-4ED6-9E13-FE7670CA9B85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Availability.Api", "Availability.Api\Availability.Api.csproj", "{06F5A0D2-C8C8-4ED6-9E13-FE7670CA9B85}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RoomOccupancy", "RoomOccupancy", "{7ACEA34B-2E65-4AF9-A65A-45113FBA83B1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AvailabilityService", "AvailabilityService", "{7ACEA34B-2E65-4AF9-A65A-45113FBA83B1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{4B24B5C0-EC9A-4937-99EE-154C3438A0A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PublicSite", "PublicWebsite\PublicSite.csproj", "{9F9B8646-8BB1-45A6-B913-9C57474CC07B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomOccupancy.Messages", "RoomOccupancy.Messages\RoomOccupancy.Messages.csproj", "{9C3B348B-94C4-4B98-A423-A3D3B611B837}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Availability.Messages", "Availability.Messages\Availability.Messages.csproj", "{9C3B348B-94C4-4B98-A423-A3D3B611B837}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomOccupancy", "RoomOccupancy\RoomOccupancy.csproj", "{3BFF9591-87BF-4447-8390-E532D1A3B930}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Availability", "Availability\Availability.csproj", "{3BFF9591-87BF-4447-8390-E532D1A3B930}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomOccupancy.Data", "RoomOccupancy.Data\RoomOccupancy.Data.csproj", "{5739CB1A-5DF8-4A0E-BF5C-029142EFE280}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Availability.Data", "Availability.Data\Availability.Data.csproj", "{5739CB1A-5DF8-4A0E-BF5C-029142EFE280}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
