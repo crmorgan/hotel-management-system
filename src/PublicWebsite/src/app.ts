@@ -5,7 +5,7 @@ export class App {
   router: Router;
 
   configureRouter(config: RouterConfiguration, router: Router) {
-    config.title = 'Aurelia';
+    config.title = 'Hotel Management System';
     //config.map([
     //  { route: ['', 'welcome'], name: 'welcome',      moduleId: './welcome',      nav: true, title: 'Welcome' },
     //  { route: 'users',         name: 'users',        moduleId: './users',        nav: true, title: 'Github Users' },

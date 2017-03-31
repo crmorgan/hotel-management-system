@@ -29,6 +29,8 @@
     <Content Include="src\app.html" />
     <Content Include="src\branding\branding.html" />
     <Content Include="src\modules\availability\search.html" />
+    <Content Include="src\nav-bar.html" />
+    <Content Include="styles\styles.css" />
     <Content Include="wallaby.js" />
     <Content Include="web.config" />
   </ItemGroup>
@@ -36,6 +38,7 @@
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="src\app.ts" />
     <TypeScriptCompile Include="src\branding\branding.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\modules\availability\search.ts" />
     <Content Include="src\modules\marketing\room-content.html" />
     <TypeScriptCompile Include="src\modules\marketing\room-content.ts" />
@@ -59,7 +62,6 @@
   <ItemGroup>
     <Folder Include=".vscode\" />
     <Folder Include="custom_typings\" />
-    <Folder Include="styles\" />
     <Folder Include="test\" />
   </ItemGroup>
   <PropertyGroup>
