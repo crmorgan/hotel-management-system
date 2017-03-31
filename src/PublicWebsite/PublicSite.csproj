@@ -26,11 +26,24 @@
     <Content Include="app.css" />
     <Content Include="favicon.ico" />
     <Content Include="index.html" />
+    <Content Include="src\app.html" />
+    <Content Include="src\branding\branding.html" />
+    <Content Include="src\modules\availability\search.html" />
+    <Content Include="src\nav-bar.html" />
+    <Content Include="styles\styles.css" />
     <Content Include="wallaby.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="src\app.ts" />
+    <TypeScriptCompile Include="src\branding\branding.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\modules\availability\search.ts" />
+    <Content Include="src\modules\marketing\room-content.html" />
+    <TypeScriptCompile Include="src\modules\marketing\room-content.ts" />
+    <Content Include="src\modules\rates\rates.html" />
+    <TypeScriptCompile Include="src\modules\rates\rates.ts" />
     <TypeScriptCompile Include="webpack.config.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -49,8 +62,6 @@
   <ItemGroup>
     <Folder Include=".vscode\" />
     <Folder Include="custom_typings\" />
-    <Folder Include="src\" />
-    <Folder Include="styles\" />
     <Folder Include="test\" />
   </ItemGroup>
   <PropertyGroup>
@@ -65,7 +76,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51741</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
