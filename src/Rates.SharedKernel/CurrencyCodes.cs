@@ -1,4 +1,4 @@
-namespace Rates.Api.Models
+namespace Rates.SharedKernel
 {
 	public enum CurrencyCodes
 	{
