@@ -39,6 +39,7 @@
     <TypeScriptCompile Include="src\app.ts" />
     <TypeScriptCompile Include="src\branding\branding.ts" />
     <TypeScriptCompile Include="src\main.ts" />
+    <TypeScriptCompile Include="src\modules\availability\RoomType.ts" />
     <TypeScriptCompile Include="src\modules\availability\search.ts" />
     <Content Include="src\modules\marketing\room-content.html" />
     <TypeScriptCompile Include="src\modules\marketing\room-content.ts" />
