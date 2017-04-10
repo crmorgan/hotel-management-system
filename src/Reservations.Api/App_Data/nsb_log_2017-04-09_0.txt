@@ -1,0 +1,38 @@
+﻿2017-04-09 18:24:01.669 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 18:24:01.773 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 18:26:48.967 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 18:26:49.059 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 19:17:26.661 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 19:17:26.762 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 19:23:20.105 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 19:23:20.194 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 19:26:29.050 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 19:26:29.131 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 19:33:34.186 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 19:33:34.266 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 19:34:12.829 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 19:34:12.913 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 19:41:06.673 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 19:41:06.761 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 19:41:32.244 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 19:41:32.351 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 19:42:11.519 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 19:42:11.599 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 20:15:53.963 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 20:15:54.072 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 20:22:51.670 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 20:22:51.751 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 20:24:32.159 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 20:24:32.240 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 20:29:12.495 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 20:29:12.596 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 20:31:44.309 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 20:31:44.413 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 20:32:03.851 INFO  NServiceBus.PerformanceMonitorUsersInstaller Did not attempt to add user 'DESKTOP-982JSEV\theki' to group 'Performance Monitor Users' since the process is not running with elevated privileges. Processing will continue. To manually perform this action, run the following command from an admin console:
+net localgroup "Performance Monitor Users" "DESKTOP-982JSEV\theki" /add
+2017-04-09 20:33:40.547 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 20:33:40.649 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 20:38:41.959 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 20:38:42.041 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
+2017-04-09 20:55:02.357 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-09 20:55:02.438 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
