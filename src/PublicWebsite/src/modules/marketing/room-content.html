@@ -1,8 +1,10 @@
 ﻿<template>
 	<require from="../../modules/rates/rates"></require>
-
-	<div>
-		Room content
+	
+	<div repeat.for="prop of content">
+		<h3>${prop.Description}</h3>
+		<span>${prop.ImageUrl}</span>
+		<rates room-type-id.bind="prop.RoomTypeId"></rates>
 	</div>
-	<rates></rates>
+	
 </template>
