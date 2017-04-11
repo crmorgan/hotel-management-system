@@ -19,7 +19,6 @@ export class RatesFetcher {
 		});
 
 		let url = 'http://localhost:54520/api/roomTypeRates?' + idString + 'checkin=' + globalVars.checkin + '&checkout=' + globalVars.checkout;
-//		let url = 'http://localhost:54520/api/roomTypeRates?' + idString + 'checkin=8/1/2017&checkout=8/6/2017';
 		this.apiClient
 			.fetch(url)
 			.then(response => {
