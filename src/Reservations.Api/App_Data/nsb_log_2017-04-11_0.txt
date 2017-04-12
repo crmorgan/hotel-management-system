@@ -1,0 +1,3 @@
+﻿2017-04-11 21:18:52.825 INFO  DefaultFactory Logging to 'C:\GitRepos\hotel-management-system\src\Reservations.Api\App_Data\' with level Info
+2017-04-11 21:18:52.885 WARN  NServiceBus.DetectObsoleteConfigurationSettings The use of the MessageEndpointMappings in the UnicastBusConfig configuration section is discouraged and will be removed in the next major version. Switch to the code API by using  'EndpointConfiguration.UseTransport<T>().Routing()' instead.
+2017-04-11 21:18:52.956 WARN  NServiceBus.LicenseManager Trial for the Particular Service Platform has expired
