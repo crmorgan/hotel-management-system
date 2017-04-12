@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using SharedKernel;
 
 namespace Availability.Api.Models
 {
