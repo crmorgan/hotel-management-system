@@ -2,7 +2,7 @@
 import {autoinject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import {Events} from '../../messages/events';
-import {globalVars} from "../../global";
+import globalVars from "../../global";
 
 @autoinject()
 export class RatesFetcher {

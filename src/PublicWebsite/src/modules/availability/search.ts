@@ -2,7 +2,7 @@
 import {HttpClient} from 'aurelia-fetch-client';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {Events} from '../../messages/events';
-import {globalVars} from "../../global";
+import globalVars from "../../global";
 
 @autoinject()
 export class Search {
@@ -10,6 +10,7 @@ export class Search {
 	checkout = '8/5/2017';
 
 	constructor(private httpClient: HttpClient, private eventAggregator: EventAggregator) {
+		console.info("search");
 		this.httpClient.configure(config => {
 			config
 				.useStandardConfiguration()

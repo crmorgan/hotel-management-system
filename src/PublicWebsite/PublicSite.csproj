@@ -67,7 +67,6 @@
   <ItemGroup>
     <Folder Include=".vscode\" />
     <Folder Include="custom_typings\" />
-    <Folder Include="test\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

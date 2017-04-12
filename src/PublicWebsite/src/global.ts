@@ -1,10 +1,7 @@
-﻿//import {IGlobal} from '../interfaces/IGlobal';
-//declare var globalVars: IGlobal;
-//export default globalVars;
-
-export var globalVars = {
+﻿export default  {
 	checkin: '',
-	checkout: "",	
+	checkout: '',	
 	reservationId: '',
 	roomTypeIds: '' 
 }
+
