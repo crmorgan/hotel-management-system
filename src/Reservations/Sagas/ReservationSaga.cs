@@ -2,7 +2,6 @@
 using NServiceBus;
 using NServiceBus.Logging;
 using Payments.Messages.Events;
-using Reservations.Messages;
 using Reservations.Messages.Events;
 
 namespace Reservations.Sagas
@@ -50,9 +49,9 @@ namespace Reservations.Sagas
 				{
 					e.RoomTypeId = Data.RoomTypeId;
 				});
-			}
 
-			MarkAsComplete();
+				MarkAsComplete();
+			}
 		}
 
 		private bool IsReservationComplete()
