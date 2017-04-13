@@ -29,6 +29,7 @@
     <Content Include="src\app.html" />
     <Content Include="src\branding\branding.html" />
     <Content Include="src\modules\availability\search.html" />
+    <Content Include="src\modules\rates\rates-fetcher.html" />
     <Content Include="src\nav-bar.html" />
     <Content Include="styles\styles.css" />
     <Content Include="wallaby.js" />
@@ -38,12 +39,15 @@
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="src\app.ts" />
     <TypeScriptCompile Include="src\branding\branding.ts" />
+    <TypeScriptCompile Include="src\interfaces\IGlobal.ts" />
     <TypeScriptCompile Include="src\main.ts" />
-    <TypeScriptCompile Include="src\modules\availability\RoomType.ts" />
+    <TypeScriptCompile Include="src\messages\events.ts" />
+    <TypeScriptCompile Include="src\global.ts" />
     <TypeScriptCompile Include="src\modules\availability\search.ts" />
     <Content Include="src\modules\marketing\room-content.html" />
     <TypeScriptCompile Include="src\modules\marketing\room-content.ts" />
     <Content Include="src\modules\rates\rates.html" />
+    <TypeScriptCompile Include="src\modules\rates\rates-fetcher.ts" />
     <TypeScriptCompile Include="src\modules\rates\rates.ts" />
     <TypeScriptCompile Include="webpack.config.ts" />
   </ItemGroup>
@@ -63,7 +67,6 @@
   <ItemGroup>
     <Folder Include=".vscode\" />
     <Folder Include="custom_typings\" />
-    <Folder Include="test\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

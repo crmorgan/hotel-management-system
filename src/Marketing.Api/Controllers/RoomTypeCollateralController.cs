@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -10,7 +9,8 @@ namespace Marketing.Api.Controllers
 	[RoutePrefix("api/collateral")]
 	public class RoomTypeCollateralController : ApiController
 	{
-		[HttpGet, Route("roomtypes/{ids=ids}")]
+		[HttpGet]
+		[Route("roomtypes/{ids=ids}")]
 		public IHttpActionResult Get([FromUri] int[] ids)
 		{
 			var collateral = GetCollateral(ids);

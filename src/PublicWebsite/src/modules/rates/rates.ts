@@ -1,51 +1,18 @@
 ﻿import {EventAggregator} from 'aurelia-event-aggregator'
-import {autoinject} from 'aurelia-framework';
+import {autoinject, bindable} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
+import {Events} from '../../messages/events';
 
 @autoinject()
 export class Rates {
-	name = 'Room content component';
+	@bindable roomTypeId;
+	rate;
 
 	constructor(private messageBus: EventAggregator, private apiClient: HttpClient) {
-		this.messageBus.subscribe("RoomTypeIdsAvailable", response => {
-			this.makeApiRequest(response);
+		this.messageBus.subscribe(Events.RatesFetched, response => {
+			this.rate = response.filter(match => {
+				return this.roomTypeId === match.RoomTypeId;
+			})[0];
 		});
-
-//		this.apiClient.configure(config => {
-//			config
-//				.useStandardConfiguration()
-//				.withBaseUrl('http://localhost:54520/api/')
-//				.withDefaults({
-//					headers: {
-//						'Accept': 'application/json',
-//					}
-//				});
-//
-//		});
-	}
-
-	makeApiRequest(response) {
-		console.log('rates', response);
-
-		var idString = '';
-
-		response.map(function(value) {
-			idString += 'ids=' + value + '&';
-		});
-
-		console.log(idString);
-
-//		let url = 'roomTypeRates?ids=1&ids=3&ids=2&ids=4';
-//		this.apiClient
-//			.fetch(url)
-//			.then(response => {
-//				console.log("1", response);
-//				return response.json();
-//			})
-//			.then(data => {
-//				console.log('2', data);
-//				this.messageBus.publish("RoomTypeIdsAvailable", data);
-//			});
-		
 	}
 }

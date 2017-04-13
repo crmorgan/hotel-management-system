@@ -1,13 +1,11 @@
 ﻿import {EventAggregator} from 'aurelia-event-aggregator'
-import {autoinject, bindable} from 'aurelia-framework';
+import {autoinject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import {Events} from '../../messages/events';
+import globalVars from "../../global";
 
 @autoinject()
-export class RoomContent {
-	name = 'Room content component';
-	content;
-
+export class RatesFetcher {
 	constructor(private messageBus: EventAggregator, private apiClient: HttpClient) {
 		this.messageBus.subscribe(Events.RoomTypeIdsAvailable, response => {
 			this.makeApiRequest(response);
@@ -16,21 +14,18 @@ export class RoomContent {
 
 	makeApiRequest(response) {
 		var idString = '';
-		response.map((value, i) => {
-			idString += 'ids=' + value;
-			if (response.lastIndexOf(response.length) !== i) {
-				idString += '&';
-			}
+		response.map(value => {
+			idString += 'ids=' + value + '&';
 		});
 
-		let url = 'http://localhost:54831/api/collateral/roomtypes?' + idString;
+		let url = 'http://localhost:54520/api/roomTypeRates?' + idString + 'checkin=' + globalVars.checkin + '&checkout=' + globalVars.checkout;
 		this.apiClient
 			.fetch(url)
 			.then(response => {
 				return response.json();
 			})
 			.then(data => {
-				this.content = data;
+				this.messageBus.publish(Events.RatesFetched, data);
 			});
 	}
 }
