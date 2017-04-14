@@ -25,7 +25,7 @@ namespace Reservations.Handlers
 
 			var reservation = new Reservation
 			{
-				Id = message.ReservationId,
+				Uuid = message.ReservationId,
 				RoomTypeId = message.RoomTypeId,
 				Dates = message.Dates
 			};
@@ -35,7 +35,7 @@ namespace Reservations.Handlers
 
 			await context.Publish<ReservationSubmittedEvent>(e =>
 			{
-				e.ReservationId = reservation.Id;
+				e.ReservationId = reservation.Uuid;
 			});
 		}
 	}

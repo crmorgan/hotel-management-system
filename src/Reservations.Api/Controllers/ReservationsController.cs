@@ -33,16 +33,18 @@ namespace Reservations.Api.Controllers
 
 		public async Task<IHttpActionResult> Post(SubmitReservation reservation)
 		{
-			var reservationId = Guid.NewGuid();
+			if(!ModelState.IsValid) return BadRequest(ModelState);
 
 			await _endpoint.Send(new SubmitReservationCommand
 			{
-				ReservationId = Guid.NewGuid(),
+				ReservationId = reservation.ReservationUuid,
 				RoomTypeId = reservation.RoomTypeId,
 				Dates =reservation.Dates
 			});
 
-			return CreatedAtRoute("DefaultApi", new { controller = "reservations", id = reservationId }, $"Reservation {reservationId} created.");
+			return CreatedAtRoute("DefaultApi",
+				new {controller = "reservations", id = reservation.ReservationUuid},
+				$"Reservation {reservation.ReservationUuid} created.");
 		}
 	}
 }

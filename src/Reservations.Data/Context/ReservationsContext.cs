@@ -27,7 +27,7 @@ namespace Reservations.Data.Context
 			Database.SetInitializer(new DatabaseInitializer(modelBuilder));
 
 			modelBuilder.Entity<Reservation>()
-				.HasKey(p => p.Id);
+				.HasKey(p => p.Uuid);
 
 			base.OnModelCreating(modelBuilder);
 		}
