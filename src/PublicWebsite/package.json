@@ -86,7 +86,8 @@
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
     "isomorphic-fetch": "^2.2.1",
-    "jquery": "^3.1.1"
+    "jquery": "^3.1.1",
+    "uniqid": "^4.1.1"
   },
   "devDependencies": {
     "@easy-webpack/config-aurelia": "^2.2.2",
@@ -110,7 +111,7 @@
     "@types/bluebird": "^3.0.35",
     "@types/jasmine": "^2.5.38",
     "@types/node": "^6.0.48",
-    "@types/webpack": "^2.0.0",    
+    "@types/webpack": "^2.0.0",
     "aurelia-protractor-plugin": "^1.0.1",
     "concurrently": "^3.1.0",
     "cross-env": "^3.1.3",

@@ -1,6 +1,6 @@
 ﻿export interface IGlobal {
-	checkin: string;
-	checkout: string;	
+	startDate: string;
+	endDate: string;	
 	reservationId: string;
 	roomTypeIds: Array<number>;
 }

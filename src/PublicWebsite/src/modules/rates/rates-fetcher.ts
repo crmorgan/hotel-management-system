@@ -2,7 +2,7 @@
 import {autoinject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import {Events} from '../../messages/events';
-import globalVars from "../../global";
+import shoppingCart from "../../shoppingCart";
 
 @autoinject()
 export class RatesFetcher {
@@ -18,7 +18,7 @@ export class RatesFetcher {
 			idString += 'ids=' + value + '&';
 		});
 
-		let url = 'http://localhost:54520/api/roomTypeRates?' + idString + 'checkin=' + globalVars.checkin + '&checkout=' + globalVars.checkout;
+		let url = 'http://localhost:54520/api/roomTypeRates?' + idString + 'checkin=' + shoppingCart.checkin + '&checkout=' + shoppingCart.checkout;
 		this.apiClient
 			.fetch(url)
 			.then(response => {

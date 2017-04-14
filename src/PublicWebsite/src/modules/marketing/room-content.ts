@@ -5,7 +5,6 @@ import {Events} from '../../messages/events';
 
 @autoinject()
 export class RoomContent {
-	name = 'Room content component';
 	content;
 
 	constructor(private messageBus: EventAggregator, private apiClient: HttpClient) {
