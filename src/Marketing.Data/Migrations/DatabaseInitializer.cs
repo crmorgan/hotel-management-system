@@ -17,13 +17,13 @@ namespace Marketing.Data.Migrations
 		protected override void Seed(MarketingContext context)
 		{
 			context.RoomTypeCollateral.AddOrUpdate(k => k.Id,
-				SeedData.GetCollateral(1, "Standard Room", "/pub/media/1/1a.jpg").ToArray());
+				SeedData.GetCollateral(1, "Standard Room", "src/pub/media/standard.jpg").ToArray());
 			context.RoomTypeCollateral.AddOrUpdate(k => k.Id,
-				SeedData.GetCollateral(2, "Two Queen Beds", "/pub/media/2/2a.jpg").ToArray());
+				SeedData.GetCollateral(2, "Two Queen Beds", "src/pub/media/queen.jpg").ToArray());
 			context.RoomTypeCollateral.AddOrUpdate(k => k.Id,
-				SeedData.GetCollateral(3, "1 King Executive", "/pub/media/3/3a.jpg").ToArray());
+				SeedData.GetCollateral(3, "1 King Executive", "src/pub/media/king.jpg").ToArray());
 			context.RoomTypeCollateral.AddOrUpdate(k => k.Id,
-				SeedData.GetCollateral(4, "1 King Bed Suite", "/pub/media/4/4a.jpg").ToArray());
+				SeedData.GetCollateral(4, "1 King Bed Suite", "src/pub/media/king-suite.jpg").ToArray());
 
 			base.Seed(context);
 		}
