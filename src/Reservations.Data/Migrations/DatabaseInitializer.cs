@@ -10,7 +10,7 @@ using SQLite.CodeFirst;
 
 namespace Reservations.Data.Migrations
 {
-	public class DatabaseInitializer : SqliteCreateDatabaseIfNotExists<ReservationsContext>
+	public class DatabaseInitializer : SqliteDropCreateDatabaseWhenModelChanges<ReservationsContext>
 	{
 		public DatabaseInitializer(DbModelBuilder modelBuilder) : base(modelBuilder)
 		{

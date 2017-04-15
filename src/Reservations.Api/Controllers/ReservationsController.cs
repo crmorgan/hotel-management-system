@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -37,7 +36,7 @@ namespace Reservations.Api.Controllers
 
 			await _endpoint.Send(new SubmitReservationCommand
 			{
-				ReservationId = reservation.ReservationUuid,
+				ReservationUuid = reservation.ReservationUuid,
 				RoomTypeId = reservation.RoomTypeId,
 				Dates =reservation.Dates
 			});

@@ -14,19 +14,19 @@ namespace Reservations.Sagas
 
 		public async Task Handle(ReservationSubmittedEvent message, IMessageHandlerContext context)
 		{
-			Log.Info("Handle ReservationSubmittedEvent");
+			Log.Info($"Handle ReservationSubmittedEvent for reservation {message.ReservationUuid}");
 
 			Data.IsReservationSubmitted = true;
-			Data.ReservationId = message.ReservationId;
+			Data.ReservationUuid = message.ReservationUuid;
 
 			await ProcessReservation(context);
 		}
 
 		public async Task Handle(PaymentSucceededEvent message, IMessageHandlerContext context)
 		{
-			Log.Info("Handle PaymentSucceededEvent");
+			Log.Info($"Handle PaymentSucceededEvent for reservation {message.ReservationUuid}");
 
-			Data.ReservationId = message.ReservationId;
+			Data.ReservationUuid = message.ReservationUuid;
 			Data.RoomTypeId = message.RoomTypeId;
 			Data.IsPaymentProcessed = true;
 
@@ -36,8 +36,8 @@ namespace Reservations.Sagas
 
 		protected override void ConfigureHowToFindSaga(SagaPropertyMapper<ReservationSagaData> mapper)
 		{
-			mapper.ConfigureMapping<ReservationSubmittedEvent>(p => p.ReservationId).ToSaga(s => s.ReservationId);
-			mapper.ConfigureMapping<PaymentSucceededEvent>(p => p.ReservationId).ToSaga(s => s.ReservationId);
+			mapper.ConfigureMapping<ReservationSubmittedEvent>(p => p.ReservationUuid).ToSaga(s => s.ReservationUuid);
+			mapper.ConfigureMapping<PaymentSucceededEvent>(p => p.ReservationUuid).ToSaga(s => s.ReservationUuid);
 		}
 
 		private async Task ProcessReservation(IMessageHandlerContext context)
