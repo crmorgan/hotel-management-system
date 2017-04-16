@@ -13,12 +13,12 @@ export class ReservationSelect {
 	select() {
 		let url = 'http://localhost:54626//api/reservations';
 		let body = {
+			"reservationUuid": shoppingCart.reservationUuid,
 			"roomTypeId": this.roomTypeId,
 			"dates": {
 				"startDate": shoppingCart.checkin,
 				"endDate": shoppingCart.checkout
 			}
-//			"reservationUuid": shoppingCart.reservationUuid
 		}
 
 		this.httpClient.fetch(url,{
