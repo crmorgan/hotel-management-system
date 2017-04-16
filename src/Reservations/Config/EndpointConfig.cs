@@ -58,7 +58,7 @@ namespace Reservations.Config
 			var context = new ReservationsContext();
 			var reservations = context.Reservations.ToList();
 
-			Log.InfoFormat("Database initialized, first reservation is {0}", reservations.First().Id);
+			Log.InfoFormat("Database initialized, first reservation is {0}", reservations.First().Uuid);
 		}
 	}
 }

@@ -1,10 +1,9 @@
-﻿using System;
-using NServiceBus;
+﻿using NServiceBus;
 
 namespace Reservations.Messages.Events
 {
 	public class ReservationSubmittedEvent : IEvent
 	{
-		public Guid ReservationId { get; set; }
+		public string ReservationUuid { get; set; }
 	}
 }

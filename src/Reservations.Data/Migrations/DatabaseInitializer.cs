@@ -10,7 +10,7 @@ using SQLite.CodeFirst;
 
 namespace Reservations.Data.Migrations
 {
-	public class DatabaseInitializer : SqliteCreateDatabaseIfNotExists<ReservationsContext>
+	public class DatabaseInitializer : SqliteDropCreateDatabaseWhenModelChanges<ReservationsContext>
 	{
 		public DatabaseInitializer(DbModelBuilder modelBuilder) : base(modelBuilder)
 		{
@@ -18,8 +18,8 @@ namespace Reservations.Data.Migrations
 
 		protected override void Seed(ReservationsContext context)
 		{
-			context.Reservations.AddOrUpdate(k => k.Id, SeedData.GetReservations(1).ToArray());
-			context.Reservations.AddOrUpdate(k => k.Id, SeedData.GetReservations(2).ToArray());
+			context.Reservations.AddOrUpdate(k => k.Uuid, SeedData.GetReservations(1).ToArray());
+			context.Reservations.AddOrUpdate(k => k.Uuid, SeedData.GetReservations(2).ToArray());
 
 			base.Seed(context);
 		}
@@ -31,7 +31,7 @@ namespace Reservations.Data.Migrations
 		{
 			yield return new Reservation
 			{
-				Id = Guid.NewGuid(),
+				Uuid = Guid.NewGuid().ToString("D").Substring(0,8),
 				RoomTypeId = roomTypeId,
 				Dates = new DateRange(DateTime.Today.AddDays(14), DateTime.Today.AddDays(18))
 			};

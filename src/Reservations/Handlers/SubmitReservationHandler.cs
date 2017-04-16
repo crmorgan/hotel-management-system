@@ -3,7 +3,6 @@ using NServiceBus;
 using NServiceBus.Logging;
 using Reservations.Data.Context;
 using Reservations.Data.Models;
-using Reservations.Messages;
 using Reservations.Messages.Commands;
 using Reservations.Messages.Events;
 
@@ -21,11 +20,11 @@ namespace Reservations.Handlers
 
 		public async Task Handle(SubmitReservationCommand message, IMessageHandlerContext context)
 		{
-			Log.Info("Handle SubmitReservationCommand");
+			Log.Info($"Handle SubmitReservationCommand for reservation {message.ReservationUuid}");
 
 			var reservation = new Reservation
 			{
-				Id = message.ReservationId,
+				Uuid = message.ReservationUuid,
 				RoomTypeId = message.RoomTypeId,
 				Dates = message.Dates
 			};
@@ -35,7 +34,7 @@ namespace Reservations.Handlers
 
 			await context.Publish<ReservationSubmittedEvent>(e =>
 			{
-				e.ReservationId = reservation.Id;
+				e.ReservationUuid = reservation.Uuid;
 			});
 		}
 	}

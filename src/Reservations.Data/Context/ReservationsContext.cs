@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using Reservations.Data.Migrations;
 using Reservations.Data.Models;
