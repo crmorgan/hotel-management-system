@@ -115,6 +115,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -130,11 +131,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\NServiceBusConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubmitPayment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Payments.Data\Payments.Data.csproj">
+      <Project>{C86FB347-EB9C-441F-A342-EB8CAB6E0F23}</Project>
+      <Name>Payments.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Payments.Messages\Payments.Messages.csproj">
+      <Project>{7152D261-0998-4A0D-B37B-4FC8162F53FB}</Project>
+      <Name>Payments.Messages</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
