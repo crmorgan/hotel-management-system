@@ -40,8 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\SubmitPaymentCommand.cs" />
+    <Compile Include="Events\PaymentSubmittedEvent.cs" />
     <Compile Include="Events\PaymentSucceededEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Payments.Data\Payments.Data.csproj">
+      <Project>{C86FB347-EB9C-441F-A342-EB8CAB6E0F23}</Project>
+      <Name>Payments.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
