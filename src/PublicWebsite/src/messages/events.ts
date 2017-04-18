@@ -2,6 +2,7 @@
 export const Events = {
 	RoomTypeIdsAvailable: 'RoomTypeIdsAvailable',
 	RatesFetched: 'RatesFetched',
-	RatesSummaryFetched: 'RatesSummaryFetched'
+	RatesSummaryFetched: 'RatesSummaryFetched',
+	BookRoom: 'BookRoom'
 }
 

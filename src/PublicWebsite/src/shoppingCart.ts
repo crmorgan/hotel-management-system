@@ -1,9 +1,9 @@
 ﻿export default {
-	checkin: new Date('8/1/2017'),
-	checkout: new Date('8/5/2107'),
+	checkin: new Date(),
+	checkout: new Date(),
 	reservationUuid: '',
 	roomTypeIds: '',
-	roomTypeId: '1',
-	numberOfNights: 4
+	roomTypeId: '',
+	numberOfNights: 0
 }
 
