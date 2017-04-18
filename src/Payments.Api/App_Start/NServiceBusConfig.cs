@@ -7,7 +7,7 @@ namespace Reservations.Api
 	{
 		internal static void Configure(ContainerBuilder containerBuilder)
 		{
-			var config = new EndpointConfiguration("Payments.API");
+			var config = new EndpointConfiguration("PaymentMethods.API");
 
 			config.SendOnly();
 

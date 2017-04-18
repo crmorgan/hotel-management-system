@@ -133,11 +133,11 @@
   <ItemGroup>
     <Compile Include="App_Start\NServiceBusConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\PaymentsController.cs" />
+    <Compile Include="Controllers\PaymentMethodsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\SubmitPayment.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

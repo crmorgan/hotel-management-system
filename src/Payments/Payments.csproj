@@ -77,7 +77,7 @@
   <ItemGroup>
     <Compile Include="Config\ContainerSetup.cs" />
     <Compile Include="Config\EndpointConfig.cs" />
-    <Compile Include="Handlers\SubmitReservationHandler.cs" />
+    <Compile Include="Handlers\SubmitPaymentMethodHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
