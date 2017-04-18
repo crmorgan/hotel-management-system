@@ -11,7 +11,7 @@ export class Search {
 	checkin = '8/1/2017';
 	checkout = '8/5/2017';
 
-	constructor(private httpClient: HttpClient, private eventAggregator: EventAggregator) {
+	constructor(private httpClient: HttpClient, private messageBus: EventAggregator) {
 		this.httpClient.configure(config => {
 			config
 				.useStandardConfiguration()
@@ -24,9 +24,10 @@ export class Search {
 	}
 
 	checkAvailability() {
-		shoppingCart.checkin = this.checkin;
-		shoppingCart.checkout = this.checkout;
+		shoppingCart.checkin = new Date(this.checkin);
+		shoppingCart.checkout = new Date(this.checkout);
 		shoppingCart.reservationUuid = uniqid();
+		shoppingCart.numberOfNights = new Date(shoppingCart.checkout.getTime() - shoppingCart.checkin.getTime()).getUTCDate() -1;
 
 		let url = 'http://localhost:50673/api/' + 'RoomTypeAvailability?dates.startDate=' + this.checkin + '&dates.endDate=' + this.checkout;
 
@@ -37,7 +38,7 @@ export class Search {
 			})
 			.then(data => {
 				console.log(data);
-				this.eventAggregator.publish(Events.RoomTypeIdsAvailable, data);
+				this.messageBus.publish(Events.RoomTypeIdsAvailable, data);
 			});
 	}
 }

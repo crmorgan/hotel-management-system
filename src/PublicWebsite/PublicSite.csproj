@@ -30,8 +30,12 @@
     <Content Include="src\branding\branding.html" />
     <Content Include="src\modules\availability\search.html" />
     <Content Include="src\modules\marketing\room-content.css" />
+    <Content Include="src\modules\payment\payment.html" />
+    <Content Include="src\modules\rates\rates-summary.html" />
     <Content Include="src\modules\rates\rates-fetcher.html" />
+    <Content Include="src\modules\reservation\reservation-amount.html" />
     <Content Include="src\modules\reservation\reservation-select.html" />
+    <Content Include="src\modules\summary\summary.html" />
     <Content Include="src\nav-bar.html" />
     <Content Include="src\pub\media\king-suite.jpg" />
     <Content Include="src\pub\media\king.jpg" />
@@ -48,7 +52,11 @@
     <TypeScriptCompile Include="src\interfaces\IGlobal.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\messages\events.ts" />
+    <TypeScriptCompile Include="src\modules\payment\payment.ts" />
+    <TypeScriptCompile Include="src\modules\rates\rates-summary.ts" />
+    <TypeScriptCompile Include="src\modules\reservation\reservation-amount.ts" />
     <TypeScriptCompile Include="src\modules\reservation\reservation-select.ts" />
+    <TypeScriptCompile Include="src\modules\summary\summary.ts" />
     <TypeScriptCompile Include="src\shoppingCart.ts" />
     <TypeScriptCompile Include="src\modules\availability\search.ts" />
     <Content Include="src\modules\marketing\room-content.html" />
