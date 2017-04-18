@@ -1,6 +1,6 @@
 ﻿export default {
-	checkin: '',
-	checkout: '',
+	checkin: new Date(),
+	checkout: new Date(),
 	reservationUuid: '',
 	roomTypeIds: '',
 	roomTypeId: '',
