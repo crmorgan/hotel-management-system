@@ -8,8 +8,7 @@ namespace Payments.Data.Context
 {
 	public interface IPaymentsContext
 	{
-		IDbSet<Payment> Payments { get; set; }
-		IDbSet<CreditCard> CreditCards { get; set; }
+		IDbSet<PaymentMethod> PaymentMethods { get; set; }
 		Task<int> SaveChangesAsync();
 	}
 
@@ -20,25 +19,18 @@ namespace Payments.Data.Context
 		{
 		}
 
-		public IDbSet<Payment> Payments { get; set; }
-		public IDbSet<CreditCard> CreditCards { get; set; }
+		public IDbSet<PaymentMethod> PaymentMethods { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			Database.SetInitializer(new DatabaseInitializer(modelBuilder));
 
-			modelBuilder.Entity<Payment>()
+			modelBuilder.Entity<PaymentMethod>()
 				.HasKey(p => p.Id)
 				.Property(p => p.Id)
 				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-			modelBuilder.Entity<CreditCard>()
-				.HasKey(p => p.Id);
-
-			modelBuilder.Entity<Payment>()
-				.HasRequired(p => p.Card)
-				.WithRequiredPrincipal(p => p.Payment);
-
+			modelBuilder.ComplexType<CreditCard>();
 			base.OnModelCreating(modelBuilder);
 		}
 	}

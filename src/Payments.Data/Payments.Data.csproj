@@ -67,7 +67,7 @@
     <Compile Include="Context\PaymentsContext.cs" />
     <Compile Include="Context\SqLiteConfig.cs" />
     <Compile Include="Models\CreditCard.cs" />
-    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
     <Compile Include="Migrations\DatabaseInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

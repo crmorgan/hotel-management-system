@@ -1,0 +1,163 @@
+{
+	"variables": [],
+	"info": {
+		"name": "HMS",
+		"_postman_id": "ef5a529b-d49e-b408-f751-0f5d47e58263",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Availability",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Room Type Availability",
+					"request": {
+						"url": "http://localhost:50673/api/RoomTypeAvailability?dates.startDate=4/5/2017&dates.endDate=4/10/2017",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Dates\": {\r\n  \"StartDate\": \"2017-03-01T00:00:00\",\r\n  \"EndDate\": \"2017-03-05T00:00:00\"\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Marketing",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Room Type Collateral",
+					"request": {
+						"url": "http://localhost:54831/api/collateral/roomtypes?ids=1&ids=3&ids=2&ids=4",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Dates\": {\r\n  \"StartDate\": \"2017-03-01T00:00:00\",\r\n  \"EndDate\": \"2017-03-05T00:00:00\"\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"description": "",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"url": "http://localhost:52507/api/payments",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Payment",
+					"request": {
+						"url": "http://localhost:52507/api/payments",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"paymentUuid\": \"a3bs78he\",\n\t\"purchaseUuid\": \"8b35fae4\",\n\t\"amount\": 120.99,\n\t\"card\":{\n\t\t\"number\": \"371449635398431\",\n\t\t\"typeId\": 1,\n\t\t\"expiration\": \"4/20\"\n\t}\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rates",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Room Type Rates",
+					"request": {
+						"url": "http://localhost:54520/api/roomTypeRates?ids=1&ids=3&ids=2&ids=4&checkin=5/1/2017&checkout=5/5/2017",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Dates\": {\r\n  \"StartDate\": \"2017-03-01T00:00:00\",\r\n  \"EndDate\": \"2017-03-05T00:00:00\"\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservations",
+			"description": "",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"url": "http://localhost:54626/api/reservations",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Reservation",
+					"request": {
+						"url": "http://localhost:54626/api/reservations",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"reservationUuid\": \"bb3dt48\",\r\n    \"roomTypeId\": 1,\r\n    \"dates\": {\r\n      \"startDate\": \"2017-05-23T00:00:00\",\r\n      \"endDate\": \"2017-05-27T00:00:00\" }\r\n  }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

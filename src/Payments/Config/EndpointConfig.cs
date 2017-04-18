@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using NServiceBus;
 using NServiceBus.Logging;
+using Payments.Data.Context;
 
 namespace Payments.Config
 {
@@ -15,6 +17,8 @@ namespace Payments.Config
 
 			if (Environment.UserInteractive)
 				Console.Title = "HMS.Payments";
+
+			InitializeDatbase();
 		}
 
 		public void Customize(EndpointConfiguration endpointConfiguration)
@@ -44,6 +48,16 @@ namespace Payments.Config
 					t.Name.EndsWith("Event"));
 
 			endpointConfiguration.EnableInstallers();
+		}
+
+		private void InitializeDatbase()
+		{
+			Log.Info("Initializing database");
+
+			var context = new PaymentsContext();
+			var count = context.PaymentMethods.Count();
+
+			Log.InfoFormat($"Database initialized with {count} payments");
 		}
 	}
 }

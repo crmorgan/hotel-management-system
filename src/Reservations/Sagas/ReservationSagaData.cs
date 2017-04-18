@@ -8,6 +8,6 @@ namespace Reservations.Sagas
 		public virtual string ReservationUuid { get; set; }
 		public virtual int RoomTypeId { get; set; }
 		public virtual bool IsReservationSubmitted { get; set; }
-		public virtual bool IsPaymentProcessed { get; set; }
+		public virtual bool HasPaymentMethod { get; set; }
 	}
 }
