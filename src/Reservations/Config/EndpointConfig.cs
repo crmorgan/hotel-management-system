@@ -2,6 +2,7 @@
 using System.Linq;
 using NServiceBus;
 using NServiceBus.Logging;
+using Payments.Messages.Events;
 using Reservations.Data.Context;
 
 namespace Reservations.Config
@@ -30,25 +31,18 @@ namespace Reservations.Config
 			endpointConfiguration.UseSerialization<JsonSerializer>();
 			endpointConfiguration.Recoverability().Delayed(c => c.NumberOfRetries(0));
 			endpointConfiguration.UseContainer<AutofacBuilder>(c => c.ExistingLifetimeScope(container));
-			endpointConfiguration.UseTransport<MsmqTransport>()
-				.ConnectionString("deadLetter=false;journal=false");
 			endpointConfiguration.UsePersistence<InMemoryPersistence>();
-
 			endpointConfiguration.SendFailedMessagesTo("error");
 			endpointConfiguration.AuditProcessedMessagesTo("audit");
-
-			var conventions = endpointConfiguration.Conventions();
-			conventions.DefiningCommandsAs(
-				t =>
-					t.Namespace != null && t.Namespace.StartsWith("Reservations") && t.Namespace.EndsWith("Commands") &&
-					t.Name.EndsWith("Command"));
-
-			conventions.DefiningEventsAs(
-				t =>
-					t.Namespace != null && t.Namespace.StartsWith("Reservations") && t.Namespace.EndsWith("Events") &&
-					t.Name.EndsWith("Event"));
-
 			endpointConfiguration.EnableInstallers();
+
+			var transport = endpointConfiguration.UseTransport<MsmqTransport>()
+				.ConnectionString("deadLetter=false;journal=false");
+
+			var routing = transport.Routing();
+			routing.RegisterPublisher(typeof(PaymentMethodSubmittedEvent), "HMS.Payments");
+
+
 		}
 
 		private void InitializeDatbase()
