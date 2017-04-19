@@ -44,10 +44,10 @@ namespace Reservations.Sagas
 			if (IsReservationComplete())
 			{
 				//TODO: Reservation complete so we need to check/update occupancy level for the room type
-				await context.Send<RoomTypeReservedEvent>(e =>
-				{
-					e.RoomTypeId = Data.RoomTypeId;
-				});
+				//await context.Send<RoomTypeReservedEvent>(e =>
+				//{
+				//	e.RoomTypeId = Data.RoomTypeId;
+				//});
 
 				MarkAsComplete();
 			}

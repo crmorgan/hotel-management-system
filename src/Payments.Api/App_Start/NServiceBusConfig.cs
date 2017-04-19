@@ -1,27 +1,22 @@
 using Autofac;
 using NServiceBus;
 
-namespace Reservations.Api
+namespace Payments.Api
 {
 	public class NServiceBusConfig
 	{
 		internal static void Configure(ContainerBuilder containerBuilder)
 		{
-			var config = new EndpointConfiguration("PaymentMethods.API");
+			var endpointConfiguration = new EndpointConfiguration("HMS.Payments.API");
 
-			config.SendOnly();
+			endpointConfiguration.SendOnly();
+			endpointConfiguration.UseTransport<MsmqTransport>().ConnectionString("deadLetter=false;journal=false");
+			endpointConfiguration.UseSerialization<JsonSerializer>();
+			endpointConfiguration.UsePersistence<InMemoryPersistence>();
+			endpointConfiguration.SendFailedMessagesTo("error");
+			endpointConfiguration.AuditProcessedMessagesTo("audit");
 
-			config.UseTransport<MsmqTransport>().ConnectionString("deadLetter=false;journal=false");
-			config.UseSerialization<JsonSerializer>();
-			config.UsePersistence<InMemoryPersistence>();
-
-			config.SendFailedMessagesTo("error");
-
-			config.Conventions()
-				.DefiningCommandsAs(t => t.Namespace != null && t.Namespace == "Payments.Messages" || t.Name.EndsWith("Command"))
-				.DefiningEventsAs(t => t.Namespace != null && t.Namespace == "Payments.Messages" || t.Name.EndsWith("Event"));
-
-			var endpoint = Endpoint.Start(config).GetAwaiter().GetResult();
+			var endpoint = Endpoint.Start(endpointConfiguration).GetAwaiter().GetResult();
 
 			containerBuilder.RegisterInstance(endpoint)
 				.As<IEndpointInstance>()

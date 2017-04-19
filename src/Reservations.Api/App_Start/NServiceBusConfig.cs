@@ -7,21 +7,16 @@ namespace Reservations.Api
 	{
 		internal static void Configure(ContainerBuilder containerBuilder)
 		{
-			var config = new EndpointConfiguration("Reservations.API");
+			var endpointConfiguration = new EndpointConfiguration("HMS.Reservations.API");
 
-			config.SendOnly();
+			endpointConfiguration.SendOnly();
+			endpointConfiguration.UseTransport<MsmqTransport>().ConnectionString("deadLetter=false;journal=false");
+			endpointConfiguration.UseSerialization<JsonSerializer>();
+			endpointConfiguration.UsePersistence<InMemoryPersistence>();
+			endpointConfiguration.SendFailedMessagesTo("error");
+			endpointConfiguration.AuditProcessedMessagesTo("audit");
 
-			config.UseTransport<MsmqTransport>().ConnectionString("deadLetter=false;journal=false");
-			config.UseSerialization<JsonSerializer>();
-			config.UsePersistence<InMemoryPersistence>();
-
-			config.SendFailedMessagesTo("error");
-
-			config.Conventions()
-				.DefiningCommandsAs(t => t.Namespace != null && t.Namespace == "Reservations.Messages" || t.Name.EndsWith("Command"))
-				.DefiningEventsAs(t => t.Namespace != null && t.Namespace == "Reservations.Messages" || t.Name.EndsWith("Event"));
-
-			var endpoint = Endpoint.Start(config).GetAwaiter().GetResult();
+			var endpoint = Endpoint.Start(endpointConfiguration).GetAwaiter().GetResult();
 
 			containerBuilder.RegisterInstance(endpoint)
 				.As<IEndpointInstance>()
