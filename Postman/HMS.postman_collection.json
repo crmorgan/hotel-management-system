@@ -34,6 +34,72 @@
 			]
 		},
 		{
+			"name": "Guests",
+			"description": "",
+			"item": [
+				{
+					"name": "Submit Guest",
+					"request": {
+						"url": "http://localhost:50551/api/guests",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"GuestUuid\": \"da3h235l\",\r\n  \"ReservationUuid\": \"da2c295f\",\r\n  \"Title\": \"Mr.\",\r\n  \"FirstName\": \"John\",\r\n  \"LastName\": \"Smith\",\r\n  \"Email\": \"jsmith@test.com\",\r\n  \"Address\": {\r\n\t  \"Line1\": \"1234 Main Streen\",\r\n\t  \"City\": \"Denver\",\r\n\t  \"State\": \"CO\",\r\n\t  \"Zip\": \"80202\"\r\n\t}\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"url": "http://localhost:50551/api/guests",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"GuestUuid\": \"da3h235l\",\r\n  \"ReservationUuid\": \"da2c295f\",\r\n  \"Title\": \"Mr.\",\r\n  \"FirstName\": \"John\",\r\n  \"LastName\": \"Smith\",\r\n  \"Email\": \"jsmith@test.com\",\r\n  \"Address\": {\r\n\t  \"Line1\": \"1234 Main Streen\",\r\n\t  \"City\": \"Denver\",\r\n\t  \"State\": \"CO\",\r\n\t  \"Zip\": \"80202\"\r\n\t}\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"url": "http://localhost:50551/api/guests/da3h235l",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"GuestUuid\": \"da3h235l\",\r\n  \"ReservationUuid\": \"da2c295f\",\r\n  \"Title\": \"Mr.\",\r\n  \"FirstName\": \"John\",\r\n  \"LastName\": \"Smith\",\r\n  \"Email\": \"jsmith@test.com\",\r\n  \"Address\": {\r\n\t  \"Line1\": \"1234 Main Streen\",\r\n\t  \"City\": \"Denver\",\r\n\t  \"State\": \"CO\",\r\n\t  \"Zip\": \"80202\"\r\n\t}\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Marketing",
 			"description": "",
 			"item": [
@@ -64,9 +130,9 @@
 			"description": "",
 			"item": [
 				{
-					"name": "Get All",
+					"name": "Payment Methods - All",
 					"request": {
-						"url": "http://localhost:52507/api/payments",
+						"url": "http://localhost:52507/api/paymentmethods",
 						"method": "GET",
 						"header": [],
 						"body": {},
@@ -75,10 +141,10 @@
 					"response": []
 				},
 				{
-					"name": "Create Payment",
+					"name": "Submit PaymentMethod",
 					"request": {
-						"url": "http://localhost:52507/api/payments",
-						"method": "POST",
+						"url": "http://localhost:52507/api/paymentmethods",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -88,7 +154,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"paymentUuid\": \"a3bs78he\",\n\t\"purchaseUuid\": \"8b35fae4\",\n\t\"amount\": 120.99,\n\t\"card\":{\n\t\t\"number\": \"371449635398431\",\n\t\t\"typeId\": 1,\n\t\t\"expiration\": \"4/20\"\n\t}\n}\n"
+							"raw": "{\n\t\"paymentMethodUuid\": \"x3hp56tl\",\n\t\"purchaseUuid\": \"8b35fae4\",\n\t\"card\":{\n\t\t\"cardHolderName\": \"John Smith\",\n\t\t\"number\": \"371449635398431\",\n\t\t\"typeId\": 1,\n\t\t\"expiration\": \"4/20\"\n\t}\n}"
 						},
 						"description": ""
 					},

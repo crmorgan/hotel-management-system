@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7152D261-0998-4A0D-B37B-4FC8162F53FB}</ProjectGuid>
+    <ProjectGuid>{83C89AF2-FCE1-4763-8C55-3060D7711B98}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Payments.Messages</RootNamespace>
-    <AssemblyName>hms.payments.messages</AssemblyName>
+    <RootNamespace>Guests.Messages</RootNamespace>
+    <AssemblyName>hms.guests.messages</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,16 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\SubmitPaymentMethodCommand.cs" />
-    <Compile Include="Events\PaymentMethodSubmittedEvent.cs" />
+    <Compile Include="Commands\SubmitGuestCommand.cs" />
+    <Compile Include="Events\GuestSubmittedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Payments.Data\Payments.Data.csproj">
-      <Project>{C86FB347-EB9C-441F-A342-EB8CAB6E0F23}</Project>
-      <Name>Payments.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

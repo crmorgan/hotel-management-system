@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{51895589-81B3-4432-9DA2-12CDA37B7F18}</ProjectGuid>
+    <ProjectGuid>{8EE714EB-4BA4-4D12-B704-625FF6EB043A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Reservations</RootNamespace>
-    <AssemblyName>hms.reservations</AssemblyName>
+    <RootNamespace>Guests</RootNamespace>
+    <AssemblyName>hms.guests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -77,35 +77,22 @@
   <ItemGroup>
     <Compile Include="Config\ContainerSetup.cs" />
     <Compile Include="Config\EndpointConfig.cs" />
-    <Compile Include="Handlers\SubmitReservationHandler.cs" />
+    <Compile Include="Handlers\SubmitGuestHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sagas\ReservationSaga.cs" />
-    <Compile Include="Sagas\ReservationSagaData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Guests.Data\Guests.Data.csproj">
+      <Project>{21AE17AB-38BD-4F63-836F-8B3CC3482FB3}</Project>
+      <Name>Guests.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Guests.Messages\Guests.Messages.csproj">
       <Project>{83C89AF2-FCE1-4763-8C55-3060D7711B98}</Project>
       <Name>Guests.Messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Payments.Messages\Payments.Messages.csproj">
-      <Project>{7152D261-0998-4A0D-B37B-4FC8162F53FB}</Project>
-      <Name>Payments.Messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reservations.Data\Reservations.Data.csproj">
-      <Project>{10DCB518-B28E-41EC-9904-C6ECE023F13C}</Project>
-      <Name>Reservations.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reservations.Messages\Reservations.Messages.csproj">
-      <Project>{A459296C-A3B6-4982-A403-2A5B4A020A76}</Project>
-      <Name>Reservations.Messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SharedKernel\SharedKernel.csproj">
-      <Project>{62B25E20-2FE1-4265-8AC1-1029343FEE01}</Project>
-      <Name>SharedKernel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

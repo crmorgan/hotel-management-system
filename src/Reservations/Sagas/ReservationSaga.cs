@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Guests.Messages.Events;
 using NServiceBus;
 using NServiceBus.Logging;
 using Payments.Messages.Events;
@@ -8,7 +9,8 @@ namespace Reservations.Sagas
 {
 	public class ReservationSaga : Saga<ReservationSagaData>, 
 		IAmStartedByMessages<ReservationSubmittedEvent>,
-		IHandleMessages<PaymentMethodSubmittedEvent>
+		IHandleMessages<PaymentMethodSubmittedEvent>,
+		IHandleMessages<GuestSubmittedEvent>
 	{
 		private static readonly ILog Log = LogManager.GetLogger<ReservationSaga>();
 
@@ -33,17 +35,30 @@ namespace Reservations.Sagas
 		}
 
 
+		public async Task Handle(GuestSubmittedEvent message, IMessageHandlerContext context)
+		{
+			Log.Info($"Handle PaymentMethodSubmittedEvent for reservation {message.ReservationUuid}");
+
+			Data.ReservationUuid = message.ReservationUuid;
+			Data.HasGuest = true;
+
+			await ProcessReservation(context);
+		}
+
+
 		protected override void ConfigureHowToFindSaga(SagaPropertyMapper<ReservationSagaData> mapper)
 		{
 			mapper.ConfigureMapping<ReservationSubmittedEvent>(p => p.ReservationUuid).ToSaga(s => s.ReservationUuid);
 			mapper.ConfigureMapping<PaymentMethodSubmittedEvent>(p => p.PurchaseUuid).ToSaga(s => s.ReservationUuid);
+			mapper.ConfigureMapping<GuestSubmittedEvent>(p => p.ReservationUuid).ToSaga(s => s.ReservationUuid);
 		}
 
 		private async Task ProcessReservation(IMessageHandlerContext context)
 		{
 			if (IsReservationComplete())
 			{
-				//TODO: Reservation complete so we need to check/update occupancy level for the room type
+				Log.Info($"ReservationSaga for reservation {Data.ReservationUuid} marked as complete");
+				//TODO: Reservation complete so we need to update occupancy level for the room type
 				//await context.Send<RoomTypeReservedEvent>(e =>
 				//{
 				//	e.RoomTypeId = Data.RoomTypeId;
@@ -55,7 +70,7 @@ namespace Reservations.Sagas
 
 		private bool IsReservationComplete()
 		{
-			return Data.IsReservationSubmitted && Data.HasPaymentMethod;
+			return Data.IsReservationSubmitted && Data.HasPaymentMethod && Data.HasGuest;
 		}
 	}
 
