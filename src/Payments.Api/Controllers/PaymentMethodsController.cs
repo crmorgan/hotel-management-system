@@ -29,7 +29,9 @@ namespace Payments.Api.Controllers
 
 		public IHttpActionResult Get(string id)
 		{
-			var payment = _context.PaymentMethods.Where(p => p.Id == id);
+			var payment = _context.PaymentMethods.SingleOrDefault(p => p.Id == id);
+
+			if (payment == null) return NotFound();
 
 			return Ok(payment);
 		}

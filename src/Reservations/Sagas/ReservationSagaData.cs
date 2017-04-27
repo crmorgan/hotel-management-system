@@ -9,5 +9,6 @@ namespace Reservations.Sagas
 		public virtual int RoomTypeId { get; set; }
 		public virtual bool IsReservationSubmitted { get; set; }
 		public virtual bool HasPaymentMethod { get; set; }
+		public bool HasGuest { get; set; }
 	}
 }

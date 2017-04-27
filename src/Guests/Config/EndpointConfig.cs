@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Linq;
-using Guests.Messages.Events;
+using Guests.Data.Context;
 using NServiceBus;
 using NServiceBus.Logging;
-using Payments.Messages.Events;
-using Reservations.Data.Context;
 
-namespace Reservations.Config
+namespace Guests.Config
 {
-	[EndpointName("HMS.Reservations")]
+	[EndpointName("HMS.Guests")]
 	public class EndpointConfig : IConfigureThisEndpoint, AsA_Server
 	{
 		private static readonly ILog Log = LogManager.GetLogger<EndpointConfig>();
@@ -18,9 +16,19 @@ namespace Reservations.Config
 			LogManager.Use<DefaultFactory>();
 
 			if (Environment.UserInteractive)
-				Console.Title = "HMS.Reservations";
+				Console.Title = "HMS.Guests";
 
 			InitializeDatbase();
+		}
+
+		private void InitializeDatbase()
+		{
+			Log.Info("Initializing database");
+
+			var context = new GuestsContext();
+			var count = context.Guests.Count();
+
+			Log.InfoFormat($"Database initialized with {count} guests");
 		}
 
 		public void Customize(EndpointConfiguration endpointConfiguration)
@@ -32,29 +40,13 @@ namespace Reservations.Config
 			endpointConfiguration.UseSerialization<JsonSerializer>();
 			endpointConfiguration.Recoverability().Delayed(c => c.NumberOfRetries(0));
 			endpointConfiguration.UseContainer<AutofacBuilder>(c => c.ExistingLifetimeScope(container));
+			endpointConfiguration.UseTransport<MsmqTransport>().ConnectionString("deadLetter=false;journal=false");
 			endpointConfiguration.UsePersistence<InMemoryPersistence>();
 			endpointConfiguration.SendFailedMessagesTo("error");
 			endpointConfiguration.AuditProcessedMessagesTo("audit");
 			endpointConfiguration.EnableInstallers();
-
-			var transport = endpointConfiguration.UseTransport<MsmqTransport>()
-				.ConnectionString("deadLetter=false;journal=false");
-
-			var routing = transport.Routing();
-			routing.RegisterPublisher(typeof(PaymentMethodSubmittedEvent), "HMS.Payments");
-			routing.RegisterPublisher(typeof(GuestSubmittedEvent), "HMS.Guests");
-
-
 		}
 
-		private void InitializeDatbase()
-		{
-			Log.Info("Initializing database");
-
-			var context = new ReservationsContext();
-			var reservations = context.Reservations.ToList();
-
-			Log.InfoFormat("Database initialized, first reservation is {0}", reservations.First().Uuid);
-		}
+		
 	}
 }
