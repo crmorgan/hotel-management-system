@@ -19,7 +19,7 @@ export class Payments {
 	}
 
 	submitPayment() {
-		let url = 'http://localhost:54626/api/payment';
+		let url = 'http://localhost:52507/api/paymentMethods';
 		let body = {
 			"paymentMethodUuid": uniqid(),
 			"purchaseUuid": shoppingCart.reservationUuid,
@@ -32,7 +32,7 @@ export class Payments {
 		}
 
 		this.httpClient.fetch(url, {
-			method: 'POST',
+			method: 'PUT',
 			body: json(body)
 		})
 		.then(response => response.json())

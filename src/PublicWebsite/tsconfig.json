@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "allowJs": true,
-			"compileOnSave": true,
+		//"compileOnSave": true,
 
     "lib": [
       "es2017", "dom"
