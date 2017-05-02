@@ -34,6 +34,43 @@
 			]
 		},
 		{
+			"name": "Finance",
+			"description": "",
+			"item": [
+				{
+					"name": "Submit Invoice",
+					"request": {
+						"url": "http://localhost:59119/api/invoices",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"InvoiceUuid\": \"a23js8q\",\r\n  \"CorrelationUuid\": \"l87h54s\",\r\n  \"LineItems\": [\r\n  \t{\r\n\t  \"Description\": \"Queen Suite\",\r\n\t  \"Type\": \"Reservation\",\r\n\t  \"Quantity\": 4,\r\n\t  \"Price\": 299.0\r\n  \t\t\r\n  \t}\r\n  \t]\r\n}\r\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Invoices",
+					"request": {
+						"url": "http://localhost:59119/api/invoices",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Guests",
 			"description": "",
 			"item": [
@@ -51,7 +88,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"GuestUuid\": \"da3h235l\",\r\n  \"ReservationUuid\": \"da2c295f\",\r\n  \"Title\": \"Mr.\",\r\n  \"FirstName\": \"John\",\r\n  \"LastName\": \"Smith\",\r\n  \"Email\": \"jsmith@test.com\",\r\n  \"Address\": {\r\n\t  \"Line1\": \"1234 Main Streen\",\r\n\t  \"City\": \"Denver\",\r\n\t  \"State\": \"CO\",\r\n\t  \"Zip\": \"80202\"\r\n\t}\r\n}"
+							"raw": "{\r\n  \"guestUuid\": \"ii6lo61\",\r\n  \"reservationUuid\": \"ii5lo61\",\r\n  \"title\": \"Mr.\",\r\n  \"firstName\": \"Guest\",\r\n  \"lastName\": \"Test\",\r\n  \"email\": \"gman@test.com\",\r\n  \"address\": {\r\n\t  \"line1\": \"1234 Any street\",\r\n\t  \"city\": \"Denver\",\r\n\t  \"state\": \"CO\",\r\n\t  \"zip\": \"80202\"\r\n\t}\r\n}"
 						},
 						"description": ""
 					},
