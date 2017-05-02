@@ -27,6 +27,7 @@
     <Content Include="favicon.ico" />
     <Content Include="index.html" />
     <Content Include="src\app.html" />
+    <Content Include="src\branding\confirmation.html" />
     <Content Include="src\branding\branding.html" />
     <Content Include="src\modules\availability\search.html" />
     <Content Include="src\modules\guests\guests.html" />
@@ -36,6 +37,8 @@
     <Content Include="src\modules\rates\rates-fetcher.html" />
     <Content Include="src\modules\reservation\reservation-amount.html" />
     <Content Include="src\modules\reservation\reservation-select.html" />
+    <TypeScriptCompile Include="src\branding\confirmation.ts" />
+    <TypeScriptCompile Include="src\modules\summary\BookingState.ts" />
     <Content Include="src\modules\summary\summary.html" />
     <Content Include="src\nav-bar.html" />
     <Content Include="src\pub\media\king-suite.jpg" />

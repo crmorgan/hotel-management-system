@@ -37,7 +37,7 @@ export class Payments {
 		})
 		.then(response => response.json())
 		.then(data => {
-
+      this.messageBus.publish(Events.PaymentSubmitted);
 		});
 	}
 }

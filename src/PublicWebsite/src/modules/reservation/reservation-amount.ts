@@ -12,15 +12,16 @@ export class ReservationAmount {
 	constructor(private httpClient: HttpClient, private messageBus: EventAggregator, private router: Router) {
 		this.messageBus.subscribe(Events.RatesSummaryFetched, message => {
 			this.amount = message.ammount;
-		});
+    });
+
+	  this.messageBus.subscribe(Events.BookRoom, () => {
+	    this.submitReservation();
+	  });
 	}
 
-	submit() {
-		let url = 'http://localhost:54626//api/reservations';
-		let body = {
-			"reservationUuid": shoppingCart.reservationUuid,
-			"ammount": this.amount
-		}
+	submitReservation() {
+    let url = 'http://localhost:54626//api/reservations/' + shoppingCart.reservationUuid + ' /rates';
+	  let body = this.amount;
 
 		this.httpClient.fetch(url,{
 			method: 'POST',
@@ -28,7 +29,7 @@ export class ReservationAmount {
 		})
 		.then(response => response.json())
 		.then(data => {
-
+      this.messageBus.publish(Events.ReservationSubmitted);
 		});
 	}
 }
