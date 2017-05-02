@@ -259,6 +259,26 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "Set Reservation Rate",
+					"request": {
+						"url": "http://localhost:54626/api/reservations/bb3dt48/rates",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"rate\": 299.0\r\n  }"
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		}

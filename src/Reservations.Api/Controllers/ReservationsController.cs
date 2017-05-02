@@ -45,5 +45,25 @@ namespace Reservations.Api.Controllers
 				new {controller = "reservations", id = reservation.ReservationUuid},
 				$"Reservation {reservation.ReservationUuid} created.");
 		}
+
+		[HttpPut, Route("api/reservations/{id}/rates")]
+		public async Task<IHttpActionResult> SetRate(string id, [FromBody] decimal rate)
+		{
+			if (!ModelState.IsValid) return BadRequest(ModelState);
+
+			//await _endpoint.Send(new ReservationRateSelectedEvent
+			//{
+			//	ReservationUuid = id,
+			//	Rate = rate
+			//});
+
+			return Ok($"Reservation rate set to {rate:C}.");
+		}
+	}
+
+	public class ReservationRateSelectedEvent
+	{
+		public string ReservationUuid { get; set; }
+		public decimal Rate { get; set; }
 	}
 }
