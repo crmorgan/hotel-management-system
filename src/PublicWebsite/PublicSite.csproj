@@ -29,6 +29,7 @@
     <Content Include="src\app.html" />
     <Content Include="src\branding\branding.html" />
     <Content Include="src\modules\availability\search.html" />
+    <Content Include="src\modules\guests\guests.html" />
     <Content Include="src\modules\marketing\room-content.css" />
     <Content Include="src\modules\payment\payment.html" />
     <Content Include="src\modules\rates\rates-summary.html" />
@@ -52,6 +53,7 @@
     <TypeScriptCompile Include="src\interfaces\IGlobal.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\messages\events.ts" />
+    <TypeScriptCompile Include="src\modules\guests\guests.ts" />
     <TypeScriptCompile Include="src\modules\payment\payment.ts" />
     <TypeScriptCompile Include="src\modules\rates\rates-summary.ts" />
     <TypeScriptCompile Include="src\modules\reservation\reservation-amount.ts" />
