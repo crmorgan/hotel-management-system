@@ -2,6 +2,7 @@
 import {autoinject, bindable} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import {Events} from '../../messages/events';
+import './room-content.css'
 
 @autoinject()
 export class RoomContent {

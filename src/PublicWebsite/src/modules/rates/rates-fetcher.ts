@@ -6,7 +6,7 @@ import shoppingCart from "../../shoppingCart";
 
 @autoinject()
 export class RatesFetcher {
-	constructor(private messageBus: EventAggregator, private apiClient: HttpClient) {
+	constructor(private messageBus: EventAggregator, private httpClient: HttpClient) {
 		this.messageBus.subscribe(Events.RoomTypeIdsAvailable, response => {
 			this.makeApiRequest(response);
 		});
@@ -18,8 +18,8 @@ export class RatesFetcher {
 			idString += 'ids=' + value + '&';
 		});
 
-		let url = 'http://localhost:54520/api/roomTypeRates?' + idString + 'checkin=' + shoppingCart.checkin + '&checkout=' + shoppingCart.checkout;
-		this.apiClient
+		let url = 'http://localhost:54520/api/roomTypeRates?' + idString + 'checkin=' + shoppingCart.checkin.toLocaleDateString() + '&checkout=' + shoppingCart.checkout.toLocaleDateString();
+		this.httpClient
 			.fetch(url)
 			.then(response => {
 				return response.json();

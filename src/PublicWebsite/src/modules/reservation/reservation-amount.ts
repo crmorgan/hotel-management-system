@@ -1,27 +1,25 @@
 ﻿import {autoinject, bindable} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import {Events} from '../../messages/events';
 import shoppingCart from "../../shoppingCart";
 import {Router} from 'aurelia-router';
 
 @autoinject()
-export class ReservationSelect {
-	@bindable roomTypeId;
+export class ReservationAmount {
+	amount;
 
 	constructor(private httpClient: HttpClient, private messageBus: EventAggregator, private router: Router) {
-		
+		this.messageBus.subscribe(Events.RatesSummaryFetched, message => {
+			this.amount = message.ammount;
+		});
 	}
 
-	select() {
-		shoppingCart.roomTypeId = this.roomTypeId;
+	submit() {
 		let url = 'http://localhost:54626//api/reservations';
 		let body = {
 			"reservationUuid": shoppingCart.reservationUuid,
-			"roomTypeId": this.roomTypeId,
-			"dates": {
-				"startDate": shoppingCart.checkin,
-				"endDate": shoppingCart.checkout
-			}
+			"ammount": this.amount
 		}
 
 		this.httpClient.fetch(url,{
@@ -30,7 +28,7 @@ export class ReservationSelect {
 		})
 		.then(response => response.json())
 		.then(data => {
-			this.router.navigate("summary");
+
 		});
 	}
 }
