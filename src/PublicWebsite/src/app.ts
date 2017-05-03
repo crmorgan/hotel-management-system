@@ -9,7 +9,8 @@ export class App {
 
 	config.map([
 		{ route: ['', 'branding'], name: 'branding', moduleId: './branding/branding', nav: true, title: 'Home' },
-		{ route: ['summary'], name: 'summary', moduleId: './modules/summary/summary' }
+		{ route: ['summary'], name: 'summary', moduleId: './modules/summary/summary' },
+		{ route: ['confirmation'], name: 'confirmation', moduleId: './branding/confirmation' }
     ]);
 
     this.router = router;

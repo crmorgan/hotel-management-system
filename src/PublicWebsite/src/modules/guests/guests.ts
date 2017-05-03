@@ -47,7 +47,7 @@ export class Guests {
 		})
 		.then(response => response.json())
 		.then(data => {
-
+      this.messageBus.publish(Events.GuestSubmitted);
 		});
 	}
 }
