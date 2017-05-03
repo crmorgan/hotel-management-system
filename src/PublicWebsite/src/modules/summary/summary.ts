@@ -11,17 +11,17 @@ export class Summary {
   constructor(private messageBus: EventAggregator, private router: Router) {
     this.bookingState = new BookingState();
 
-    this.messageBus.subscribe(Events.GuestSubmitted, () => {
+    this.messageBus.subscribeOnce(Events.GuestSubmitted, () => {
       this.bookingState.guestSubmitted = true;
       this.isBookingComplete();
     });
 
-    this.messageBus.subscribe(Events.PaymentSubmitted, () => {
+    this.messageBus.subscribeOnce(Events.PaymentSubmitted, () => {
       this.bookingState.paymentSubmitted = true;
       this.isBookingComplete();
     });
 
-    this.messageBus.subscribe(Events.ReservationSubmitted, () => {
+    this.messageBus.subscribeOnce(Events.ReservationSubmitted, () => {
       this.bookingState.reservationSubmitted = true;
       this.isBookingComplete();
     });
@@ -29,6 +29,7 @@ export class Summary {
 
   isBookingComplete() {
     if (this.bookingState.isBookingSubmitted()) {
+      console.log("navigate");
       this.router.navigate('confirmation');
     }
   }

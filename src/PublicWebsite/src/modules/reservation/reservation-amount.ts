@@ -11,7 +11,7 @@ export class ReservationAmount {
 
 	constructor(private httpClient: HttpClient, private messageBus: EventAggregator, private router: Router) {
 		this.messageBus.subscribe(Events.RatesSummaryFetched, message => {
-			this.amount = message.ammount;
+      this.amount = message.Amount;
     });
 
 	  this.messageBus.subscribe(Events.BookRoom, () => {
@@ -20,12 +20,17 @@ export class ReservationAmount {
 	}
 
 	submitReservation() {
-    let url = 'http://localhost:54626//api/reservations/' + shoppingCart.reservationUuid + ' /rates';
-	  let body = this.amount;
+    let url = 'http://localhost:54626//api/reservations/' + shoppingCart.reservationUuid + '/rates';
+
+//	  this.messageBus.publish(Events.ReservationSubmitted);
+	  let body = {
+	    "rate": parseInt(this.amount)
+	  }
 
 		this.httpClient.fetch(url,{
-			method: 'POST',
-			body: json(body)
+			method: 'PUT',
+      body: json(this.amount)
+			
 		})
 		.then(response => response.json())
 		.then(data => {
