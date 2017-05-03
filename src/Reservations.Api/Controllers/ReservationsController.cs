@@ -5,6 +5,7 @@ using NServiceBus;
 using Reservations.Api.Models;
 using Reservations.Data.Context;
 using Reservations.Messages.Commands;
+using Reservations.Messages.Events;
 
 namespace Reservations.Api.Controllers
 {
@@ -51,19 +52,13 @@ namespace Reservations.Api.Controllers
 		{
 			if (!ModelState.IsValid) return BadRequest(ModelState);
 
-			//await _endpoint.Send(new ReservationRateSelectedEvent
-			//{
-			//	ReservationUuid = id,
-			//	Rate = rate
-			//});
+			await _endpoint.Send(new SetReservationRateCommand
+			{
+				ReservationUuid = id,
+				Rate = rate
+			});
 
 			return Ok($"Reservation rate set to {rate:C}.");
 		}
-	}
-
-	public class ReservationRateSelectedEvent
-	{
-		public string ReservationUuid { get; set; }
-		public decimal Rate { get; set; }
 	}
 }

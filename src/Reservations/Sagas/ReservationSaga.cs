@@ -1,8 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
 using Guests.Messages.Events;
 using NServiceBus;
 using NServiceBus.Logging;
 using Payments.Messages.Events;
+using Reservations.Data.Context;
 using Reservations.Messages.Events;
 
 namespace Reservations.Sagas
@@ -10,9 +14,16 @@ namespace Reservations.Sagas
 	public class ReservationSaga : Saga<ReservationSagaData>, 
 		IAmStartedByMessages<ReservationSubmittedEvent>,
 		IHandleMessages<PaymentMethodSubmittedEvent>,
-		IHandleMessages<GuestSubmittedEvent>
+		IHandleMessages<GuestSubmittedEvent>,
+		IHandleMessages<ReservationRateSelectedEvent>
 	{
+		private readonly IReservationsContext _reservationsContext;
 		private static readonly ILog Log = LogManager.GetLogger<ReservationSaga>();
+
+		public ReservationSaga(IReservationsContext reservationsContext)
+		{
+			_reservationsContext = reservationsContext;
+		}
 
 		public async Task Handle(ReservationSubmittedEvent message, IMessageHandlerContext context)
 		{
@@ -45,37 +56,48 @@ namespace Reservations.Sagas
 			await ProcessReservation(context);
 		}
 
+		public async Task Handle(ReservationRateSelectedEvent message, IMessageHandlerContext context)
+		{
+			Log.Info($"Handle ReservationRateSelectedEvent for reservation {message.ReservationUuid}");
+
+			Data.ReservationUuid = message.ReservationUuid;
+			Data.HasRate = true;
+
+			await ProcessReservation(context);
+		}
+
 
 		protected override void ConfigureHowToFindSaga(SagaPropertyMapper<ReservationSagaData> mapper)
 		{
 			mapper.ConfigureMapping<ReservationSubmittedEvent>(p => p.ReservationUuid).ToSaga(s => s.ReservationUuid);
 			mapper.ConfigureMapping<PaymentMethodSubmittedEvent>(p => p.PurchaseUuid).ToSaga(s => s.ReservationUuid);
 			mapper.ConfigureMapping<GuestSubmittedEvent>(p => p.ReservationUuid).ToSaga(s => s.ReservationUuid);
+			mapper.ConfigureMapping<ReservationRateSelectedEvent>(p => p.ReservationUuid).ToSaga(s => s.ReservationUuid);
 		}
 
 		private async Task ProcessReservation(IMessageHandlerContext context)
 		{
-			if (IsReservationComplete())
+			if (IsReservationDataCollected())
 			{
-				Log.Info($"ReservationSaga for reservation {Data.ReservationUuid} marked as complete");
-				//TODO: Reservation complete so we need to update occupancy level for the room type
-				//await context.Send<RoomTypeReservedEvent>(e =>
-				//{
-				//	e.RoomTypeId = Data.RoomTypeId;
-				//});
+				Log.Info($"Booking reservation {Data.ReservationUuid}.");
+
+				var reservation = _reservationsContext.Reservations.Single(r => r.Uuid == Data.ReservationUuid);
+				reservation.Status = "Booked";
+
+				await _reservationsContext.SaveChangesAsync();
+
+				await context.Publish<ReservationBookedEvent>(e =>
+				{
+					e.ReservationUuid = Data.ReservationUuid;
+				});
 
 				MarkAsComplete();
 			}
 		}
 
-		private bool IsReservationComplete()
+		private bool IsReservationDataCollected()
 		{
-			return Data.IsReservationSubmitted && Data.HasPaymentMethod && Data.HasGuest;
+			return Data.IsReservationSubmitted && Data.HasPaymentMethod && Data.HasGuest && Data.HasRate;
 		}
-	}
-
-	public class RoomTypeReservedEvent
-	{
-		public int RoomTypeId { get; set; }
 	}
 }
