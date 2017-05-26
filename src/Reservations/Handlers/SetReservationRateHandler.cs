@@ -3,19 +3,18 @@ using System.Threading.Tasks;
 using NServiceBus;
 using NServiceBus.Logging;
 using Reservations.Data.Context;
-using Reservations.Data.Models;
 using Reservations.Messages.Commands;
 using Reservations.Messages.Events;
 
 namespace Reservations.Handlers
 {
-	public class ReservationRateSelectedHandler 
+	public class SetReservationRateHandler 
 		: IHandleMessages<SetReservationRateCommand>
 	{
 		private readonly IReservationsContext _reservationsContext;
 		private static readonly ILog Log = LogManager.GetLogger<SubmitReservationHandler>();
 
-		public ReservationRateSelectedHandler(IReservationsContext reservationsContext)
+		public SetReservationRateHandler(IReservationsContext reservationsContext)
 		{
 			_reservationsContext = reservationsContext;
 		}

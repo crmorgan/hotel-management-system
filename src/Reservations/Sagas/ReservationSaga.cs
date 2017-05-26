@@ -1,12 +1,10 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Guests.Messages.Events;
 using NServiceBus;
 using NServiceBus.Logging;
 using Payments.Messages.Events;
 using Reservations.Data.Context;
+using Reservations.Messages.Commands;
 using Reservations.Messages.Events;
 
 namespace Reservations.Sagas
@@ -19,11 +17,6 @@ namespace Reservations.Sagas
 	{
 		private readonly IReservationsContext _reservationsContext;
 		private static readonly ILog Log = LogManager.GetLogger<ReservationSaga>();
-
-		public ReservationSaga(IReservationsContext reservationsContext)
-		{
-			_reservationsContext = reservationsContext;
-		}
 
 		public async Task Handle(ReservationSubmittedEvent message, IMessageHandlerContext context)
 		{
@@ -81,12 +74,7 @@ namespace Reservations.Sagas
 			{
 				Log.Info($"Booking reservation {Data.ReservationUuid}.");
 
-				var reservation = _reservationsContext.Reservations.Single(r => r.Uuid == Data.ReservationUuid);
-				reservation.Status = "Booked";
-
-				await _reservationsContext.SaveChangesAsync();
-
-				await context.Publish<ReservationBookedEvent>(e =>
+				await context.Send<BookReservationCommand>(e =>
 				{
 					e.ReservationUuid = Data.ReservationUuid;
 				});
