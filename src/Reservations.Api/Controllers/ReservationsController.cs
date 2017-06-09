@@ -5,7 +5,6 @@ using NServiceBus;
 using Reservations.Api.Models;
 using Reservations.Data.Context;
 using Reservations.Messages.Commands;
-using Reservations.Messages.Events;
 
 namespace Reservations.Api.Controllers
 {

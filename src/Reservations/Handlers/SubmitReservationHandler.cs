@@ -26,7 +26,8 @@ namespace Reservations.Handlers
 			{
 				Uuid = message.ReservationUuid,
 				RoomTypeId = message.RoomTypeId,
-				Dates = message.Dates
+				Dates = message.Dates,
+				Status = "Booking"
 			};
 
 			_reservationsContext.Reservations.Add(reservation);
