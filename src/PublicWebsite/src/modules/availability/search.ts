@@ -1,9 +1,12 @@
 ﻿import {autoinject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {Events} from '../../messages/events';
 import shoppingCart from "../../shoppingCart";
 var uniqid = require('uniqid');
+
+const Events = {
+  RoomTypeIdsAvailable: 'RoomTypeIdsAvailable'
+}
 
 
 @autoinject()

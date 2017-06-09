@@ -1,8 +1,14 @@
 ﻿import {autoinject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {Events} from '../../messages/events';
 import { BookingState } from './BookingState';
 import { Router } from 'aurelia-router';
+
+export const Events = {
+  BookRoom: 'BookRoom',
+  GuestSubmitted: 'GuestSubmitted',
+  ReservationSubmitted: 'ReservationSubmitted',
+  PaymentSubmitted: 'PaymentSubmitted'
+}
 
 @autoinject()
 export class Summary {

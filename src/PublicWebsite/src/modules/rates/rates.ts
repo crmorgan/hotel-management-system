@@ -1,7 +1,10 @@
 ﻿import {EventAggregator} from 'aurelia-event-aggregator'
 import {autoinject, bindable} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
-import {Events} from '../../messages/events';
+
+const Events = {
+  RatesFetched: 'RatesFetched'
+}
 
 @autoinject()
 export class Rates {

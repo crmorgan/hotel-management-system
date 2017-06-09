@@ -1,8 +1,11 @@
 ﻿import {EventAggregator} from 'aurelia-event-aggregator'
 import {autoinject, bindable} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
-import {Events} from '../../messages/events';
 import './room-content.css'
+
+export const Events = {
+  RoomTypeIdsAvailable: 'RoomTypeIdsAvailable',
+}
 
 @autoinject()
 export class RoomContent {
