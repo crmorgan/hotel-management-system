@@ -3,7 +3,7 @@ using System.Linq;
 using Guests.Messages.Events;
 using NServiceBus;
 using NServiceBus.Logging;
-using Payments.Messages.Events;
+using Finance.Messages.Events;
 using Reservations.Data.Context;
 
 namespace Reservations.Config
@@ -41,7 +41,7 @@ namespace Reservations.Config
 				.ConnectionString("deadLetter=false;journal=false");
 
 			var routing = transport.Routing();
-			routing.RegisterPublisher(typeof(PaymentMethodSubmittedEvent), "HMS.Payments");
+			routing.RegisterPublisher(typeof(PaymentMethodSubmittedEvent), "HMS.Finance");
 			routing.RegisterPublisher(typeof(GuestSubmittedEvent), "HMS.Guests");
 
 

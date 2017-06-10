@@ -19,7 +19,7 @@ export class Payments {
 	}
 
 	submitPayment() {
-		let url = 'http://localhost:52507/api/paymentMethods';
+		let url = 'http://localhost:59119/api/paymentMethods';
 		let body = {
 			"paymentMethodUuid": uniqid(),
 			"purchaseUuid": shoppingCart.reservationUuid,

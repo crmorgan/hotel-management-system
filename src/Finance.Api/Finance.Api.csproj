@@ -131,11 +131,11 @@
   <ItemGroup>
     <Compile Include="App_Start\NServiceBusConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\PaymentMethodsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\InvoicesController.cs" />
-    <Compile Include="Models\SubmitInvoice.cs" />
+    <Compile Include="Models\PaymentMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -143,7 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Finance.Data\Finance.Data.csproj">
-      <Project>{71FC4DED-7613-4839-AED4-F84020762124}</Project>
+      <Project>{c86fb347-eb9c-441f-a342-eb8cab6e0f23}</Project>
       <Name>Finance.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Finance.Messages\Finance.Messages.csproj">

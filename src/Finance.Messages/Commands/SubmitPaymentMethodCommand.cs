@@ -1,6 +1,6 @@
 using NServiceBus;
 
-namespace Payments.Messages.Commands
+namespace Finance.Messages.Commands
 {
 	public class SubmitPaymentMethodCommand : ICommand
 	{

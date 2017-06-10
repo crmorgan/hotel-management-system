@@ -91,6 +91,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Finance.Messages\Finance.Messages.csproj">
+      <Project>{D3849178-DD8A-4054-B40A-5180E7E837B9}</Project>
+      <Name>Finance.Messages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Guests.Messages\Guests.Messages.csproj">
       <Project>{83C89AF2-FCE1-4763-8C55-3060D7711B98}</Project>
       <Name>Guests.Messages</Name>

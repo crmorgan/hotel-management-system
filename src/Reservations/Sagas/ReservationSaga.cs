@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Configuration;
 using System.Threading.Tasks;
+using Finance.Messages.Events;
 using Guests.Messages.Events;
 using NServiceBus;
 using NServiceBus.Logging;
-using Payments.Messages.Events;
-using Reservations.Data.Context;
 using Reservations.Messages.Commands;
 using Reservations.Messages.Events;
 
@@ -18,7 +17,6 @@ namespace Reservations.Sagas
 		IHandleMessages<ReservationRateSelectedEvent>,
 		IHandleTimeouts<HoldReservationTimeout>
 	{
-		private readonly IReservationsContext _reservationsContext;
 		private static readonly ILog Log = LogManager.GetLogger<ReservationSaga>();
 
 		public async Task Handle(ReservationSubmittedEvent message, IMessageHandlerContext context)
