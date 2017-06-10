@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Finance.Data.Context;
 using NServiceBus;
 using NServiceBus.Logging;
+using Finance.Data.Context;
 
 namespace Finance.Config
 {
@@ -26,9 +26,9 @@ namespace Finance.Config
 			Log.Info("Initializing database");
 
 			var context = new FinanceContext();
-			var count = context.Invoices.Count();
+			var count = context.PaymentMethods.Count();
 
-			Log.InfoFormat($"Database initialized with {count} invoices");
+			Log.InfoFormat($"Database initialized with {count} payments");
 		}
 
 		public void Customize(EndpointConfiguration endpointConfiguration)
@@ -46,7 +46,5 @@ namespace Finance.Config
 			endpointConfiguration.AuditProcessedMessagesTo("audit");
 			endpointConfiguration.EnableInstallers();
 		}
-
-		
 	}
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3AAA10AB-F4D8-460D-8E58-9987AFE5FBE5}</ProjectGuid>
+    <ProjectGuid>{25E55DC0-0089-4EA5-8EC3-29E104C30114}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Finance</RootNamespace>
@@ -63,6 +63,10 @@
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.105.0\lib\net46\System.Data.SQLite.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.105.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.105.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,17 +77,17 @@
   <ItemGroup>
     <Compile Include="Config\ContainerSetup.cs" />
     <Compile Include="Config\EndpointConfig.cs" />
-    <Compile Include="Handlers\SubmitInvoiceHandler.cs" />
+    <Compile Include="Handlers\SubmitPaymentMethodHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Finance.Data\Finance.Data.csproj">
-      <Project>{71FC4DED-7613-4839-AED4-F84020762124}</Project>
-      <Name>Finance.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Finance.Messages\Finance.Messages.csproj">
       <Project>{D3849178-DD8A-4054-B40A-5180E7E837B9}</Project>
       <Name>Finance.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Finance.Data\Finance.Data.csproj">
+      <Project>{C86FB347-EB9C-441F-A342-EB8CAB6E0F23}</Project>
+      <Name>Finance.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

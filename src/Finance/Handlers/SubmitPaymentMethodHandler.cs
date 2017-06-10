@@ -1,22 +1,22 @@
 ﻿using System.Threading.Tasks;
+using Finance.Data.Context;
+using Finance.Data.Models;
+using Finance.Messages.Commands;
+using Finance.Messages.Events;
 using NServiceBus;
 using NServiceBus.Logging;
-using Payments.Data.Context;
-using Payments.Data.Models;
-using Payments.Messages.Commands;
-using Payments.Messages.Events;
-using CreditCard = Payments.Data.Models.CreditCard;
+using CreditCard = Finance.Data.Models.CreditCard;
 
-namespace Payments.Handlers
+namespace Finance.Handlers
 {
 	public class SubmitPaymentMethodHandler : IHandleMessages<SubmitPaymentMethodCommand>
 	{
-		private readonly IPaymentsContext _paymentsContext;
+		private readonly IFinanceContext _financeContext;
 		private static readonly ILog Log = LogManager.GetLogger<SubmitPaymentMethodHandler>();
 
-		public SubmitPaymentMethodHandler(IPaymentsContext paymentsContext)
+		public SubmitPaymentMethodHandler(IFinanceContext financeContext)
 		{
-			_paymentsContext = paymentsContext;
+			_financeContext = financeContext;
 		}
 
 		public async Task Handle(SubmitPaymentMethodCommand message, IMessageHandlerContext context)
@@ -38,9 +38,9 @@ namespace Payments.Handlers
 				CreditCard = card
 			};
 
-			_paymentsContext.PaymentMethods.Add(paymentMethod);
+			_financeContext.PaymentMethods.Add(paymentMethod);
 
-			await _paymentsContext.SaveChangesAsync();
+			await _financeContext.SaveChangesAsync();
 
 			await context.Publish<PaymentMethodSubmittedEvent>(e =>
 			{
