@@ -12,7 +12,7 @@ export const Events = {
 
 @autoinject()
 export class Summary {
-  private bookingState: BookingState;
+  private bookingState: BookingState;   
 
   constructor(private messageBus: EventAggregator, private router: Router) {
     this.bookingState = new BookingState();

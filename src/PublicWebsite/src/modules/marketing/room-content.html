@@ -1,11 +1,6 @@
 ﻿<template>
-	<require from="../../modules/rates/rates"></require>
-	<require from="../../modules/reservation/reservation-select"></require>
-	
-	<div class="room-content" repeat.for="prop of content">
-		<h3>${prop.Description}</h3>
-		<img src="${prop.ImageUrl}" alt="Image" style="width:204px;height:128px;">
-		<rates room-type-id.bind="prop.RoomTypeId"></rates>
-		<reservation-select room-type-id.bind="prop.RoomTypeId"></reservation-select>
-	</div>
+	<span>
+		<h3>${description}</h3>
+		<img src="${imageUrl}" alt="Image" style="width:204px;height:128px;">
+	</span>
 </template>

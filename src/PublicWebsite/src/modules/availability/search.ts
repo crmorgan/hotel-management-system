@@ -8,7 +8,6 @@ const Events = {
   RoomTypeIdsAvailable: 'RoomTypeIdsAvailable'
 }
 
-
 @autoinject()
 export class Search {
 	checkin = '8/1/2017';
