@@ -1,8 +1,13 @@
 ﻿import {EventAggregator} from 'aurelia-event-aggregator'
 import {autoinject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
-import {Events} from '../../messages/events';
 import shoppingCart from "../../shoppingCart";
+
+
+const Events = {
+  RoomTypeIdsAvailable: 'RoomTypeIdsAvailable',
+  RatesFetched: 'RatesFetched'
+}
 
 @autoinject()
 export class RatesFetcher {

@@ -1,36 +1,31 @@
 ﻿import {EventAggregator} from 'aurelia-event-aggregator'
 import {autoinject, bindable} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
-import {Events} from '../../messages/events';
 import './room-content.css'
+
+export const Events = {
+  RoomContentFetched: 'RoomContentFetched'
+}
 
 @autoinject()
 export class RoomContent {
-	content;
+	description;
+	imageUrl;
+	@bindable roomTypeId;
 
 	constructor(private messageBus: EventAggregator, private apiClient: HttpClient) {
-		this.messageBus.subscribe(Events.RoomTypeIdsAvailable, response => {
-			this.makeApiRequest(response);
+		this.messageBus.subscribe(Events.RoomContentFetched, data => {
+			console.log(data);
+			let content = this.getRoomContent(data);
+			this.description = content.Description;
+			this.imageUrl = content.ImageUrl;
+			
 		});
 	}
 
-	makeApiRequest(response) {
-		var idString = '';
-		response.map((value, i) => {
-			idString += 'ids=' + value;
-			if (response.lastIndexOf(response.length) !== i) {
-				idString += '&';
-			}
-		});
-
-		let url = 'http://localhost:54831/api/collateral/roomtypes?' + idString;
-		this.apiClient
-			.fetch(url)
-			.then(response => {
-				return response.json();
-			})
-			.then(data => {
-				this.content = data;
-			});
+	getRoomContent(data) {
+		return data.filter(match => {
+			return this.roomTypeId === match.RoomTypeId;
+		})[0];
 	}
 }

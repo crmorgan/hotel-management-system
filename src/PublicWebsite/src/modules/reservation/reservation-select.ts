@@ -1,6 +1,5 @@
 ﻿import {autoinject, bindable} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
-import {EventAggregator} from 'aurelia-event-aggregator';
 import shoppingCart from "../../shoppingCart";
 import {Router} from 'aurelia-router';
 
@@ -8,7 +7,7 @@ import {Router} from 'aurelia-router';
 export class ReservationSelect {
 	@bindable roomTypeId;
 
-	constructor(private httpClient: HttpClient, private messageBus: EventAggregator, private router: Router) {
+	constructor(private httpClient: HttpClient, private router: Router) {
 		
 	}
 

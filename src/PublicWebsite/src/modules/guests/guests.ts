@@ -1,9 +1,14 @@
 ﻿import {autoinject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {Events} from '../../messages/events';
 var uniqid = require('uniqid');
 import shoppingCart from "../../shoppingCart";
+
+const Events = {
+  BookRoom: 'BookRoom',
+  GuestSubmitted: 'GuestSubmitted'
+}
+
 
 @autoinject()
 export class Guests {
@@ -26,21 +31,29 @@ export class Guests {
 
 	submitGuest() {
     let url = 'http://localhost:50551/api/guests';
-    let body = {
-	      "guestUuid": this.guestUuid,
-	      "reservationUuid": shoppingCart.reservationUuid,
-	      "title": this.title,
-	      "firstName": this.firstName,
-	      "lastName": this.lastName,
-	      "email": this.email,
-	      "address": {
-	        "line1": this.line1,
-	        "city": this.city,
-	        "state": this.state,
-	        "zip": this.zip
-	    }
-	  }
+    let body = this.createGuestPayload();
 
+		this.sendGuestRequest(url, body);
+	}
+
+	private createGuestPayload() {
+		return	{
+							"guestUuid": this.guestUuid,
+							"reservationUuid": shoppingCart.reservationUuid,
+							"title": this.title,
+							"firstName": this.firstName,
+							"lastName": this.lastName,
+							"email": this.email,
+							"address": {
+								"line1": this.line1,
+								"city": this.city,
+								"state": this.state,
+								"zip": this.zip
+	    			}
+	  }
+	}
+
+	private sendGuestRequest (url, body) {
 		this.httpClient.fetch(url, {
 			method: 'PUT',
 			body: json(body)

@@ -1,9 +1,15 @@
 ﻿import {autoinject, bindable} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {Events} from '../../messages/events';
 import shoppingCart from "../../shoppingCart";
 import {Router} from 'aurelia-router';
+
+const Events = {
+  RatesSummaryFetched: 'RatesSummaryFetched',
+  BookRoom: 'BookRoom',
+  ReservationSubmitted: 'ReservationSubmitted'
+}
+
 
 @autoinject()
 export class ReservationAmount {

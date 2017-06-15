@@ -1,13 +1,23 @@
 ﻿<template>
 	<require from="../modules/availability/search"></require>
 	<require from="../modules/marketing/room-content"></require>
+	<require from="../modules/marketing/room-content-fetcher"></require>
 	<require from="../modules/rates/rates-fetcher"></require>
+	<require from="../modules/rates/rates"></require>
+	<require from="../modules/reservation/reservation-select"></require>
+	
 
 	<h2>Branding</h2>
 	<search></search>
 
 	<div>
 		<rates-fetcher></rates-fetcher>
-		<room-content></room-content>
+		<room-content-fetcher></room-content-fetcher>
+		
+		<div class="layout" repeat.for="roomTypeId of roomTypeIds">
+			<room-content room-type-id.bind="roomTypeId"></room-content>
+			<rates room-type-id.bind="roomTypeId"></rates>
+			<reservation-select room-type-id.bind="roomTypeId"></reservation-select>
+		</div>
 	</div>
 </template>

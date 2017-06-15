@@ -1,9 +1,14 @@
 ﻿import {autoinject} from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {Events} from '../../messages/events';
 var uniqid = require('uniqid');
 import shoppingCart from "../../shoppingCart";
+
+const Events = {
+  BookRoom: 'BookRoom',
+  PaymentSubmitted: 'PaymentSubmitted'
+}
+
 
 @autoinject()
 export class Payments {
@@ -19,25 +24,33 @@ export class Payments {
 	}
 
 	submitPayment() {
-		let url = 'http://localhost:59119/api/paymentMethods';
-		let body = {
-			"paymentMethodUuid": uniqid(),
-			"purchaseUuid": shoppingCart.reservationUuid,
-			"card": {
-				"cardHolderName": this.cardHolderName,
-				"number": this.cardNumber,
-				"typeId": this.cardType,
-				"expiration": this.cardExpiration
-			}
-		}
+		let url = 'http://localhost:52507/api/paymentMethods';
+		let body = this.createPaymentPayload();
 
+		this.sendPaymentRequest(url, body)
+	}
+
+	private createPaymentPayload() {
+		return  {	
+					"paymentMethodUuid": uniqid(),
+					"purchaseUuid": shoppingCart.reservationUuid,
+					"card": {
+						"cardHolderName": this.cardHolderName,
+						"number": this.cardNumber,
+						"typeId": this.cardType,
+						"expiration": this.cardExpiration
+					}
+				}
+	}
+
+	private sendPaymentRequest(url, body) {
 		this.httpClient.fetch(url, {
 			method: 'PUT',
 			body: json(body)
 		})
 		.then(response => response.json())
 		.then(data => {
-      this.messageBus.publish(Events.PaymentSubmitted);
+      		this.messageBus.publish(Events.PaymentSubmitted);
 		});
 	}
 }
