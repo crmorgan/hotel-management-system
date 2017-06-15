@@ -4,32 +4,26 @@ using NServiceBus;
 using NServiceBus.Logging;
 using Reservations.Data;
 using Reservations.Messages.Commands;
-using Reservations.Messages.Events;
 
 namespace Reservations.Handlers
 {
-	public class BookReservationHandler : IHandleMessages<BookReservationCommand>
+	public class AbaondonReservationHandler : IHandleMessages<AbandonReservationCommand>
 	{
 		private static readonly ILog Log = LogManager.GetLogger<BookReservationHandler>();
 
-		public async Task Handle(BookReservationCommand message, IMessageHandlerContext context)
+		public async Task Handle(AbandonReservationCommand message, IMessageHandlerContext context)
 		{
-			Log.Info($"Handle BookReservationCommand for reservation {message.ReservationUuid}");
+			Log.Info($"Handle AbandonReservationCommand for reservation {message.ReservationUuid}");
 
 			using (var session = DocumentStoreHolder.Store.OpenSession())
 			{
 				var reservation = session.Query<Reservation>()
 					.Single(r => r.Uuid == message.ReservationUuid);
 
-				reservation.Status = "Booked";
+				reservation.Status = "Abandoned";
 
 				session.SaveChanges();
 			}
-
-			await context.Publish<ReservationBookedEvent>(e =>
-			{
-				e.ReservationUuid = message.ReservationUuid;
-			});
 		}
 	}
 }

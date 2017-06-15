@@ -1,4 +1,4 @@
-namespace Payments.Data.Models
+namespace Finance.Data.Models
 {
 	public class CreditCard
 	{

@@ -1,7 +1,6 @@
-using System;
 using SharedKernel;
 
-namespace Reservations.Data.Models
+namespace Reservations.Data
 {
 	public class Reservation
 	{

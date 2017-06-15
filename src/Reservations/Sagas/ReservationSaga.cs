@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Configuration;
+using System.Threading.Tasks;
+using Finance.Messages.Events;
 using Guests.Messages.Events;
 using NServiceBus;
 using NServiceBus.Logging;
-using Payments.Messages.Events;
-using Reservations.Data.Context;
 using Reservations.Messages.Commands;
 using Reservations.Messages.Events;
 
@@ -13,9 +14,9 @@ namespace Reservations.Sagas
 		IAmStartedByMessages<ReservationSubmittedEvent>,
 		IHandleMessages<PaymentMethodSubmittedEvent>,
 		IHandleMessages<GuestSubmittedEvent>,
-		IHandleMessages<ReservationRateSelectedEvent>
+		IHandleMessages<ReservationRateSelectedEvent>,
+		IHandleTimeouts<HoldReservationTimeout>
 	{
-		private readonly IReservationsContext _reservationsContext;
 		private static readonly ILog Log = LogManager.GetLogger<ReservationSaga>();
 
 		public async Task Handle(ReservationSubmittedEvent message, IMessageHandlerContext context)
@@ -25,7 +26,20 @@ namespace Reservations.Sagas
 			Data.IsReservationSubmitted = true;
 			Data.ReservationUuid = message.ReservationUuid;
 
+			var minutes = int.Parse(ConfigurationManager.AppSettings["ReservationHoldTimeoutMinutes"]);
+			await RequestTimeout<HoldReservationTimeout>(context, TimeSpan.FromMinutes(minutes));
 			await ProcessReservation(context);
+		} 
+
+		public async Task Timeout(HoldReservationTimeout state, IMessageHandlerContext context)
+		{
+			if (!Data.HasGuest && !Data.HasPaymentMethod)
+			{
+				await SendAbandonReservationCancellation(context);
+
+				MarkAsComplete();
+			}
+
 		}
 
 		public async Task Handle(PaymentMethodSubmittedEvent message, IMessageHandlerContext context)
@@ -83,9 +97,25 @@ namespace Reservations.Sagas
 			}
 		}
 
+		private async Task SendAbandonReservationCancellation(IMessageHandlerContext context)
+		{
+			Log.Info($"Abandoning reservation {Data.ReservationUuid}.");
+
+			await context.Send<AbandonReservationCommand>(e =>
+			{
+				e.ReservationUuid = Data.ReservationUuid;
+			});
+
+			MarkAsComplete();
+		}
+
 		private bool IsReservationDataCollected()
 		{
 			return Data.IsReservationSubmitted && Data.HasPaymentMethod && Data.HasGuest && Data.HasRate;
 		}
+	}
+
+	public class HoldReservationTimeout
+	{
 	}
 }

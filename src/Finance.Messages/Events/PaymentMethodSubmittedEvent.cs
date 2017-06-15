@@ -1,6 +1,6 @@
 using NServiceBus;
 
-namespace Payments.Messages.Events
+namespace Finance.Messages.Events
 {
 	public class PaymentMethodSubmittedEvent : IEvent
 	{

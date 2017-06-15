@@ -44,8 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\SubmitInvoiceCommand.cs" />
-    <Compile Include="Events\InvoiceSubmittedEvent.cs" />
+    <Compile Include="Commands\SubmitPaymentMethodCommand.cs" />
+    <Compile Include="Events\PaymentMethodSubmittedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

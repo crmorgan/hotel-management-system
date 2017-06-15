@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AbandonReservationCommand.cs" />
     <Compile Include="Commands\BookReservationCommand.cs" />
     <Compile Include="Commands\SetReservationRateCommand.cs" />
     <Compile Include="Events\ReservationBookedEvent.cs" />
