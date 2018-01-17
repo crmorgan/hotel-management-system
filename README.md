@@ -32,7 +32,7 @@ To ensure MSMQ and MSDTC are installed, download and run the [Particular Platfor
 		- Reservations
 		- Reservations.Api
 	1. Click **OK**
-1. Run the projects by pressing `CTRL+F5`
+1. Run the projects by pressing <kbd>Ctrl</kbd>+<kbd>F5</kbd>
 
 ## Aurelia SPA
 The client side application is a Single Page Application build using the [Aurelia](http://aurelia.io/) Javascript client framework.
