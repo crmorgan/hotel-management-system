@@ -2,9 +2,12 @@ This is an example of a service oriented distributed system built using NService
 
 ### Getting Started
 
-Before you start you will need [Visual Studio 2015](https://www.visualstudio.com/downloads/ "Visual Studio 2015"), [NodeJS](https://nodejs.org "NodeJS") 6.0 or higher, [NPM](https://www.npmjs.com/ "NPM") 3 or higher, and RavenDB 3.5 or higher.  You will also need MSMQ enabled and configured for NServiceBus.  You can do that manually by follwing the directions [here](https://docs.particular.net/transports/msmq/) or by running the [NServiceBus Platform Installer](https://docs.particular.net/platform/installer).
+Before you start you will need [Visual Studio 2015](https://www.visualstudio.com/downloads/ "Visual Studio 2015"), [NodeJS](https://nodejs.org "NodeJS") 6.0 or higher, [NPM](https://www.npmjs.com/ "NPM") 3 or higher, RavenDB 3.5 or higher and MSMQ.  Specific setup steps for these are detailed below.
 
-#### Server Side Processes and API
+#### MSMQ and MSDTC
+
+To ensure MSMQ and MSDTC are installed, download and run the [Particular Platform Installer](https://particular.net/start-platform-download).  On the component selection screen select the "Configure MSDTC for NServiceBus" and "Configure Microsoft Message Queuing" options.  You can install the other Particular components if you want to but they are not required.
+
 #### RavenDB
 
 1. Download RavenDB from https://ravendb.net/download and extract it.
@@ -13,9 +16,9 @@ Before you start you will need [Visual Studio 2015](https://www.visualstudio.com
 #### Visual Studio
 1. Open the src/HotelManagementSystem.sln solution file in Visual Studio 2015 or higher
 1. Right click on the solution and select **Restore NuGet Packages**
-1. Run the all the server side processes and APIs by pressing `CTRL+F5` 
+1. Run the all the server side processes and APIs by pressing `CTRL+F5`
 
-#### Client Application
+#### Aurelia SPA
 The client side application is a SPA build with the Aurelia framework.
 
 From the src/PublicWebsite folder, execute the following commands:
