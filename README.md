@@ -1,8 +1,34 @@
 A service oriented distributed system built using NServiceBus.  The application is a hotel management system that allows guests to find and book a room at a hotel.  Designing a system like this was a homework assignment from Udi Dahan's [Advanced Distributed Systems Design Course](https://particular.net/adsd "Advanced Distributed Systems Design Course").
 
-# Getting Started
+# System Requirements
 
-Before you start you will need [Visual Studio 2015](https://www.visualstudio.com/downloads/ "Visual Studio 2015"), [NodeJS](https://nodejs.org "NodeJS") 6.0 or higher, [NPM](https://www.npmjs.com/ "NPM") 3 or higher, RavenDB 3.5 or higher and MSMQ.  Specific setup steps for these are detailed below.
+To run everything you will need:
+
+- [NodeJS](https://nodejs.org "NodeJS") 6.0 or higher
+- [NPM](https://www.npmjs.com/ "NPM") 3 or higher
+- [RavenDB](https://ravendb.net/download) 3.5 or higher
+- [Visual Studio 2015](https://www.visualstudio.com/downloads/ "Visual Studio 2015")
+- Microsoft MSMQ
+
+The specific setup steps for each of these are detailed below.
+
+## Node and NPM
+Install both [NodeJS](https://nodejs.org "NodeJS") and [NPM](https://www.npmjs.com/ "NPM") using the standard instructions provided on their sites. 
+
+## Aurelia SPA
+The client side application is a Single Page Application build using the [Aurelia](http://aurelia.io/) Javascript client framework.
+
+#### Install the required JavaScript packages
+
+1. Open a Windows command prompt and go to the `src/PublicWebsite` directory
+1. Execute the following command: `npm install` or: `yarn install`
+
+
+#### Run the application
+
+1. Execute the following command: `npm start` or: `yarn start`
+
+You can now browse to the hotel management web application at [http://localhost:9000](http://localhost:9000 "http://localhost:9000") (or the next available port which is displayed the output of the command).
 
 ## MSMQ and MSDTC
 
@@ -10,7 +36,8 @@ To ensure MSMQ and MSDTC are installed, download and run the [Particular Platfor
 
 ## RavenDB
 
-1. Download RavenDB from [https://ravendb.net/download](https://ravendb.net/download) and extract contents the zip file.
+1. Download the RavenDB server as a zip package from [https://ravendb.net/download](https://ravendb.net/download).
+1. Extract contents the zip file to a folder on your machine.
 1. Open the extracted folder and double click the `Start.cmd` file to start the RavenDB console.  This will also open the RavenDB Management Studio in your web browser at [http://localhost:8080](http://localhost:8080).
 
 ## Visual Studio
@@ -33,18 +60,3 @@ To ensure MSMQ and MSDTC are installed, download and run the [Particular Platfor
 		- Reservations.Api
 	1. Click **OK**
 1. Run the projects by pressing <kbd>Ctrl</kbd>+<kbd>F5</kbd>
-
-## Aurelia SPA
-The client side application is a Single Page Application build using the [Aurelia](http://aurelia.io/) Javascript client framework.
-
-#### Install the required JavaScript packages
-
-1. Open a Windows command prompt and got to the `src/PublicWebsite` directory
-1. Execute the following command: `npm install` or: `yarn install`
-
-
-#### Run the application
-
-1. Execute the following command: `npm start` or: `yarn start`
-
-You can now browse to the hotel management web application at [http://localhost:9000](http://localhost:9000 "http://localhost:9000") (or the next available port which is displayed the output of the command).
