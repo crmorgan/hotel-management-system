@@ -1,4 +1,5 @@
-A service oriented distributed system built using NServiceBus.  The application is a hotel management system that allows guests to find and book a room at a hotel.  Designing a system like this was a homework assignment from Udi Dahan's [Advanced Distributed Systems Design Course](https://particular.net/adsd "Advanced Distributed Systems Design Course").
+An example Service-Oriented Architecture using distributed system architecture and design practices from
+Udi Dahan's [Advanced Distributed Systems Design Course](https://particular.net/adsd "Advanced Distributed Systems Design Course").  One of the assignments in the ADSD course is to design the services and interactions of those services for the domain problem of booking a room at a hotel.  This project is an implementation of that design.
 
 # System Requirements
 
