@@ -12,7 +12,6 @@ const Events = {
 
 @autoinject()
 export class Guests {
-	guestUuid = uniqid();
   reservationUuid = shoppingCart.reservationUuid;
 	title = 'Mr';
 	firstName = 'John';
@@ -38,7 +37,7 @@ export class Guests {
 
 	private createGuestPayload() {
 		return	{
-							"guestUuid": this.guestUuid,
+							"guestUuid": uniqid(),
 							"reservationUuid": shoppingCart.reservationUuid,
 							"title": this.title,
 							"firstName": this.firstName,
