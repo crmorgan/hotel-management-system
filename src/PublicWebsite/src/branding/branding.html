@@ -7,14 +7,14 @@
 	<require from="../modules/reservation/reservation-select"></require>
 	
 
-	<h2>Branding</h2>
+	<h2>Find a Room</h2>
 	<search></search>
 
 	<div>
 		<rates-fetcher></rates-fetcher>
 		<room-content-fetcher></room-content-fetcher>
 		
-		<div class="layout" repeat.for="roomTypeId of roomTypeIds">
+		<div class="container mb-3" repeat.for="roomTypeId of roomTypeIds">
 			<room-content room-type-id.bind="roomTypeId"></room-content>
 			<rates room-type-id.bind="roomTypeId"></rates>
 			<reservation-select room-type-id.bind="roomTypeId"></reservation-select>
