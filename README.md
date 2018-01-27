@@ -49,12 +49,12 @@ To ensure MSMQ and MSDTC are installed, download and run the [Particular Platfor
 	1. Under the **Common Properties** folder select **Startup Project**
 	1. Select the **Multiple startup projects** option
 	1. Change the **Action** for the following projects to **Start**:
-		- Availability
 		- Availability.Api
 		- Finance
 		- Finance.Api
 		- Guests
 		- Guests.Api
+		- ITOps
 		- Marketing.Api
 		- Rates.Api
 		- Reservations
