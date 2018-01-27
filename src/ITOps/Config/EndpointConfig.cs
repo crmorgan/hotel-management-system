@@ -1,14 +1,10 @@
-﻿using Finance.Messages.Events;
-using Guests.Messages.Events;
-using ITOps.Messages.Commands;
 using NServiceBus;
 using NServiceBus.Logging;
 using System;
-using ITOps.Messages.Events;
 
-namespace Reservations.Config
+namespace ITOps.Config
 {
-	[EndpointName("HMS.Reservations")]
+	[EndpointName("HMS.ITOps")]
 	public class EndpointConfig : IConfigureThisEndpoint, AsA_Server
 	{
 		private static readonly ILog Log = LogManager.GetLogger<EndpointConfig>();
@@ -18,7 +14,7 @@ namespace Reservations.Config
 			LogManager.Use<DefaultFactory>();
 
 			if (Environment.UserInteractive)
-				Console.Title = "HMS.Reservations";
+				Console.Title = "HMS.ITOps";
 		}
 
 		public void Customize(EndpointConfiguration endpointConfiguration)
@@ -38,11 +34,8 @@ namespace Reservations.Config
 			var transport = endpointConfiguration.UseTransport<MsmqTransport>()
 				.ConnectionString("deadLetter=false;journal=false");
 
-			var routing = transport.Routing();
-			routing.RegisterPublisher(typeof(PaymentMethodSubmittedEvent), "HMS.Finance");
-			routing.RegisterPublisher(typeof(GuestSubmittedEvent), "HMS.Guests");
-			routing.RegisterPublisher(typeof(PaymentMadeEvent), "HMS.ITOps");
-			routing.RouteToEndpoint(typeof(MakePaymentCommand), "HMS.ITOps");
+			//var routing = transport.Routing();
+			//routing.RouteToEndpoint(typeof(PaymentMadeEvent), "HMS.ServiceName");
 		}
 	}
 }

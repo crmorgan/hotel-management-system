@@ -10,8 +10,8 @@ const Events = {
 
 @autoinject()
 export class Search {
-	checkin = '8/1/2017';
-	checkout = '8/5/2017';
+	checkin = '8/1/2018';
+	checkout = '8/5/2018';
 
 	constructor(private httpClient: HttpClient, private messageBus: EventAggregator) {
 		this.httpClient.configure(config => {

@@ -11,5 +11,7 @@ namespace Reservations.Sagas
 		public virtual bool HasPaymentMethod { get; set; }
 		public bool HasGuest { get; set; }
 		public bool HasRate { get; set; }
+		public bool HasCancellationFeeHold { get; set; }
+		public bool HasRequiredData => IsReservationSubmitted && HasPaymentMethod && HasGuest && HasRate;
 	}
 }
