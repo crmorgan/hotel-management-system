@@ -27,7 +27,7 @@ To ensure MSMQ and MSDTC are installed.
 
 1. Download and run the [Particular Platform Installer](https://particular.net/start-platform-download).
 1. On the component selection screen select the "Configure MSDTC for NServiceBus" and "Configure Microsoft Message Queuing" options.
- - You can install the other Particular components if you want to try them out but they are not required.
+  - You can install the other Particular components if you want to try them out but they are not required.
 
 ## RavenDB
 
@@ -37,24 +37,24 @@ To ensure MSMQ and MSDTC are installed.
 ## Visual Studio
 
 1. Open the `src/HotelManagementSystem.sln` solution file in Visual Studio
-1. Right click on the solution and select **Restore NuGet Packages**
-1. Configure solution's startup projects to start multiple projects
- 1. In Solution Explorer right-click on **Solution HotelManagementSystem** and select **Properties**
- 1. Under the **Common Properties** folder select **Startup Project**
- 1. Select the **Multiple startup projects** option
- 1. Change the **Action** for the following projects to **Start**:
-        - Availability.Api
-        - Finance
-        - Finance.Api
-        - Guests
-        - Guests.Api
-        - ITOps
-        - Marketing.Api
-        - Rates.Api
-        - Reservations
-        - Reservations.Api
- 1. Click **OK**
-1. Make sure everything compiles by pressing <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>
+2. Right click on the solution and select **Restore NuGet Packages**
+3. Configure solution's startup projects to start multiple projects
+    1. In Solution Explorer right-click on **Solution HotelManagementSystem** and select **Properties**
+    2. Under the **Common Properties** folder select **Startup Project**
+    3. Select the **Multiple startup projects** option
+    4. Change the **Action** for the following projects to **Start**:
+       - Availability.Api
+       - Finance
+       - Finance.Api
+       - Guests
+       - Guests.Api
+       - ITOps
+       - Marketing.Api
+       - Rates.Api
+       - Reservations
+       - Reservations.Api
+    5. Click **OK**
+4. Make sure everything compiles by pressing <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>
 
 # Running the System
 
