@@ -88,3 +88,32 @@ You should now have several NServiceBus process hosts running as console applica
 1. Open a Windows command prompt and go to the `src/PublicWebsite` directory
 1. Execute the following command: `npm start` or: `yarn start`
 1. In a web browser go to the Hotel Management System home page at [http://localhost:9000](http://localhost:9000 "http://localhost:9000") (or the next available port which is displayed the output of the command).
+
+# Use Cases
+This system simulates the process someone would go though to book a reservation and stay at a hotel.
+
+## Find a Room
+A guest can enter the dates they want to stay and see what room types are available and their prices.
+
+## Make a Reservation
+After a guest has selected a room type they can enter their personal information and specify a credit card to reserve a room.
+
+## Guest Check in
+Coming soon:  A hotel reception desk employee will be able to find a guest's reservation assign them to a room in the hotel and update the credit card's hold amount.
+
+## Guest Checkout
+Coming soon:  A check-out process will generate a guest's final invoice for their stay and charge the guest's credit card.
+
+# The Services
+In the context of this system a *Service* is the technical authority for a business context.  All data and business rules reside in and are owned by a Service.  They are a logical concept, not a physical one, so they can be everywhere from the UI to the database.  
+
+In this system a Service will typically a UI component, an ASP.NET Web API, an NServiceBus host, and a database.
+
+1. Availability
+2. Rates
+3. Guests
+4. Finance
+5. Marketing
+6. Reservation
+7. ITOps
+8. Branding
