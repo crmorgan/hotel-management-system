@@ -1,15 +1,29 @@
 ﻿<template>
-	<h3>Select Payment Option</h3>
-	<div>
-		Card Holder Name: <input value.bind="cardHolderName">
-	</div>
-	<div>
-		Card Number: <input value.bind="cardNumber">
-	</div>
-	<div>
-		Card Expiration: <input value.bind="cardExpiration">
-	</div>
-	<div>
-		Card Type: <input value.bind="cardType">
-	</div>
+  <h3>Payment</h3>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="cardHolderName">Card Holder Name</label>
+      <input type="text" class="form-control" id="cardHolderName" placeholder="Card Holder Name" value.bind="cardHolderName">
+    </div>
+
+    <div class="form-group col-md-5">
+      <label for="cardNumber">Card Number</label>
+      <input type="text" class="form-control" id="cardNumber" placeholder="Card Number" value.bind="cardNumber">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="cardExpiration">Expiration</label>
+      <input type="text" class="form-control" id="cardExpiration" placeholder="Expires (m/yy)" value.bind="cardExpiration">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="cardType">Card Type</label>
+      <input type="text" class="form-control" id="cardType" placeholder="Card Type" value.bind="cardType">
+    </div>
+  </div>
+
 </template>

@@ -5,7 +5,7 @@ export class App {
   router: Router;
 
   configureRouter(config: RouterConfiguration, router: Router) {
-    config.title = 'Hotel Management System';
+    config.title = 'Acme Hotel';
 
 	config.map([
 		{ route: ['', 'branding'], name: 'branding', moduleId: './branding/branding', nav: true, title: 'Home' },

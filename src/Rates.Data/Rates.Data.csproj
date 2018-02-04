@@ -66,6 +66,7 @@
     <Compile Include="Context\RatesContext.cs" />
     <Compile Include="Context\SqLiteConfig.cs" />
     <Compile Include="Migrations\DatabaseInitializer.cs" />
+    <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\RoomRate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

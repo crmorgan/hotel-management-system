@@ -1,28 +1,47 @@
 ﻿<template>
-	<h3>Guest Information</h3>
-	<div>
-		Title: <input value.bind="title">
-	</div>
-	<div>
-		First Name: <input value.bind="firstName">
-	</div>
-	<div>
-		Last Name: <input value.bind="lastName">
-	</div>
-  <div>
-    Email: <input value.bind="email">
+  <h3>Guest Information</h3>
+
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" placeholder="Title" value.bind="title">
+    </div>
+
+    <div class="form-group col-md-5">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" placeholder="First Name" value.bind="firstName">
+    </div>
+
+    <div class="form-group col-md-5">
+      <label for="firstName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" placeholder="Last Name" value.bind="lastName">
+    </div>
   </div>
-  <h4>Address</h4>
-  <div>
-    Line 1: <input value.bind="line1">
+
+  <div class="form-row">
+    <div class="form-group col-md-7">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="Email" value.bind="email">
+    </div>
   </div>
-  <div>
-    City: <input value.bind="city">
+  <div class="form-group">
+    <label for="Address1">Address</label>
+    <input type="text" class="form-control" id="address1" placeholder="1234 Main St" value.bind="line1">
   </div>
-  <div>
-    State: <input value.bind="state">
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="city">City</label>
+      <input type="text" class="form-control" id="city" value.bind="city">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="state">State</label>
+      <input type="text" class="form-control" id="state" value.bind="state">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="zip">Zip</label>
+      <input type="text" class="form-control" id="zip" value.bind="zip">
+    </div>
   </div>
-  <div>
-    Zip: <input value.bind="zip">
-  </div>
+
 </template>

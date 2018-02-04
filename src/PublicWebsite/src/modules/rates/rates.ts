@@ -20,7 +20,7 @@ export class Rates {
 
 	getRate(response) {
 		return response.filter(match => {
-			return this.roomTypeId === match.RoomTypeId;
+			return this.roomTypeId === match.roomTypeId;
 		})[0];
 	}
 }

@@ -13,7 +13,7 @@ export class ReservationSelect {
 
 	select() {
 		shoppingCart.roomTypeId = this.roomTypeId;
-		let url = 'http://localhost:54626//api/reservations';
+		let url = 'http://localhost:54626/api/reservations';
 		let body = {
 			"reservationUuid": shoppingCart.reservationUuid,
 			"roomTypeId": this.roomTypeId,

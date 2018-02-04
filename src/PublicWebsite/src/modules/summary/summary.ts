@@ -1,18 +1,19 @@
-﻿import {autoinject} from 'aurelia-framework';
-import {EventAggregator} from 'aurelia-event-aggregator';
+﻿import { autoinject } from 'aurelia-framework';
+import { EventAggregator } from 'aurelia-event-aggregator';
 import { BookingState } from './BookingState';
 import { Router } from 'aurelia-router';
 
 export const Events = {
   BookRoom: 'BookRoom',
   GuestSubmitted: 'GuestSubmitted',
-  ReservationSubmitted: 'ReservationSubmitted',
-  PaymentSubmitted: 'PaymentSubmitted'
+  // ReservationSubmitted: 'ReservationSubmitted',
+  PaymentSubmitted: 'PaymentSubmitted',
+  RateSubmitted: 'RateSubmitted'
 }
 
 @autoinject()
 export class Summary {
-  private bookingState: BookingState;   
+  private bookingState: BookingState;
 
   constructor(private messageBus: EventAggregator, private router: Router) {
     this.bookingState = new BookingState();
@@ -27,8 +28,13 @@ export class Summary {
       this.isBookingComplete();
     });
 
-    this.messageBus.subscribeOnce(Events.ReservationSubmitted, () => {
-      this.bookingState.reservationSubmitted = true;
+    // this.messageBus.subscribeOnce(Events.ReservationSubmitted, () => {
+    //   this.bookingState.reservationSubmitted = true;
+    //   this.isBookingComplete();
+    // });
+
+    this.messageBus.subscribeOnce(Events.RateSubmitted, () => {
+      this.bookingState.rateSubmitted = true;
       this.isBookingComplete();
     });
   }
@@ -40,7 +46,7 @@ export class Summary {
     }
   }
 
-	book() {
-		this.messageBus.publish(Events.BookRoom);		
-	}
+  book() {
+    this.messageBus.publish(Events.BookRoom);
+  }
 }

@@ -1,10 +1,10 @@
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web.Http;
 using NServiceBus;
 using Reservations.Api.Models;
 using Reservations.Data;
 using Reservations.Messages.Commands;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace Reservations.Api.Controllers
 {
@@ -55,21 +55,6 @@ namespace Reservations.Api.Controllers
 			return CreatedAtRoute("DefaultApi",
 				new {controller = "reservations", id = reservation.ReservationUuid},
 				$"Reservation {reservation.ReservationUuid} created.");
-		}
-
-
-		[HttpPut, Route("api/reservations/{id}/rates")]
-		public async Task<IHttpActionResult> SetRate(string id, [FromBody] decimal rate)
-		{
-			if (!ModelState.IsValid) return BadRequest(ModelState);
-
-			await _endpoint.Send(new SetReservationRateCommand
-			{
-				ReservationUuid = id,
-				Rate = rate
-			});
-
-			return Ok($"Reservation rate set to {rate:C}.");
 		}
 	}
 }

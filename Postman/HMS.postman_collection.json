@@ -1,33 +1,50 @@
 {
-	"variables": [],
 	"info": {
 		"name": "HMS",
-		"_postman_id": "ef5a529b-d49e-b408-f751-0f5d47e58263",
+		"_postman_id": "b3dffcc9-adfe-1a02-46fc-9738a445a8e4",
 		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Availability",
-			"description": "",
 			"item": [
 				{
 					"name": "Get Room Type Availability",
 					"request": {
-						"url": "http://localhost:50673/api/RoomTypeAvailability?dates.startDate=4/5/2017&dates.endDate=4/10/2017",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"Dates\": {\r\n  \"StartDate\": \"2017-03-01T00:00:00\",\r\n  \"EndDate\": \"2017-03-05T00:00:00\"\r\n  }\r\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:50673/api/RoomTypeAvailability?dates.startDate=4/5/2017&dates.endDate=4/10/2017",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "50673",
+							"path": [
+								"api",
+								"RoomTypeAvailability"
+							],
+							"query": [
+								{
+									"key": "dates.startDate",
+									"value": "4/5/2017"
+								},
+								{
+									"key": "dates.endDate",
+									"value": "4/10/2017"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -35,36 +52,57 @@
 		},
 		{
 			"name": "Finance",
-			"description": "",
 			"item": [
 				{
 					"name": "Submit Invoice",
 					"request": {
-						"url": "http://localhost:59119/api/invoices",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"InvoiceUuid\": \"a23js8q\",\r\n  \"CorrelationUuid\": \"l87h54s\",\r\n  \"LineItems\": [\r\n  \t{\r\n\t  \"Description\": \"Queen Suite\",\r\n\t  \"Type\": \"Reservation\",\r\n\t  \"Quantity\": 4,\r\n\t  \"Price\": 299.0\r\n  \t\t\r\n  \t}\r\n  \t]\r\n}\r\n"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:59119/api/invoices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "59119",
+							"path": [
+								"api",
+								"invoices"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get All Invoices",
 					"request": {
-						"url": "http://localhost:59119/api/invoices",
 						"method": "GET",
 						"header": [],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:59119/api/invoices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "59119",
+							"path": [
+								"api",
+								"invoices"
+							]
+						}
 					},
 					"response": []
 				}
@@ -72,65 +110,92 @@
 		},
 		{
 			"name": "Guests",
-			"description": "",
 			"item": [
 				{
 					"name": "Submit Guest",
 					"request": {
-						"url": "http://localhost:50551/api/guests",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"guestUuid\": \"ii6lo61\",\r\n  \"reservationUuid\": \"ii5lo61\",\r\n  \"title\": \"Mr.\",\r\n  \"firstName\": \"Guest\",\r\n  \"lastName\": \"Test\",\r\n  \"email\": \"gman@test.com\",\r\n  \"address\": {\r\n\t  \"line1\": \"1234 Any street\",\r\n\t  \"city\": \"Denver\",\r\n\t  \"state\": \"CO\",\r\n\t  \"zip\": \"80202\"\r\n\t}\r\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:50551/api/guests",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "50551",
+							"path": [
+								"api",
+								"guests"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get All",
 					"request": {
-						"url": "http://localhost:50551/api/guests",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"GuestUuid\": \"da3h235l\",\r\n  \"ReservationUuid\": \"da2c295f\",\r\n  \"Title\": \"Mr.\",\r\n  \"FirstName\": \"John\",\r\n  \"LastName\": \"Smith\",\r\n  \"Email\": \"jsmith@test.com\",\r\n  \"Address\": {\r\n\t  \"Line1\": \"1234 Main Streen\",\r\n\t  \"City\": \"Denver\",\r\n\t  \"State\": \"CO\",\r\n\t  \"Zip\": \"80202\"\r\n\t}\r\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:50551/api/guests",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "50551",
+							"path": [
+								"api",
+								"guests"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get",
 					"request": {
-						"url": "http://localhost:50551/api/guests/da3h235l",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"GuestUuid\": \"da3h235l\",\r\n  \"ReservationUuid\": \"da2c295f\",\r\n  \"Title\": \"Mr.\",\r\n  \"FirstName\": \"John\",\r\n  \"LastName\": \"Smith\",\r\n  \"Email\": \"jsmith@test.com\",\r\n  \"Address\": {\r\n\t  \"Line1\": \"1234 Main Streen\",\r\n\t  \"City\": \"Denver\",\r\n\t  \"State\": \"CO\",\r\n\t  \"Zip\": \"80202\"\r\n\t}\r\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:50551/api/guests/da3h235l",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "50551",
+							"path": [
+								"api",
+								"guests",
+								"da3h235l"
+							]
+						}
 					},
 					"response": []
 				}
@@ -138,25 +203,52 @@
 		},
 		{
 			"name": "Marketing",
-			"description": "",
 			"item": [
 				{
 					"name": "Get Room Type Collateral",
 					"request": {
-						"url": "http://localhost:54831/api/collateral/roomtypes?ids=1&ids=3&ids=2&ids=4",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"Dates\": {\r\n  \"StartDate\": \"2017-03-01T00:00:00\",\r\n  \"EndDate\": \"2017-03-05T00:00:00\"\r\n  }\r\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:54831/api/collateral/roomtypes?ids=1&ids=3&ids=2&ids=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54831",
+							"path": [
+								"api",
+								"collateral",
+								"roomtypes"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "1"
+								},
+								{
+									"key": "ids",
+									"value": "3"
+								},
+								{
+									"key": "ids",
+									"value": "2"
+								},
+								{
+									"key": "ids",
+									"value": "4"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -164,36 +256,57 @@
 		},
 		{
 			"name": "Payments",
-			"description": "",
 			"item": [
 				{
 					"name": "Payment Methods - All",
 					"request": {
-						"url": "http://localhost:52507/api/paymentmethods",
 						"method": "GET",
 						"header": [],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:52507/api/paymentmethods",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "52507",
+							"path": [
+								"api",
+								"paymentmethods"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Submit PaymentMethod",
 					"request": {
-						"url": "http://localhost:52507/api/paymentmethods",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"paymentMethodUuid\": \"x3hp56tl\",\n\t\"purchaseUuid\": \"8b35fae4\",\n\t\"card\":{\n\t\t\"cardHolderName\": \"John Smith\",\n\t\t\"number\": \"371449635398431\",\n\t\t\"typeId\": 1,\n\t\t\"expiration\": \"4/20\"\n\t}\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:52507/api/paymentmethods",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "52507",
+							"path": [
+								"api",
+								"paymentmethods"
+							]
+						}
 					},
 					"response": []
 				}
@@ -201,23 +314,125 @@
 		},
 		{
 			"name": "Rates",
-			"description": "",
 			"item": [
 				{
 					"name": "Get Room Type Rates",
 					"request": {
-						"url": "http://localhost:54520/api/roomTypeRates?ids=1&ids=3&ids=2&ids=4&checkin=5/1/2017&checkout=5/5/2017",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"Dates\": {\r\n  \"StartDate\": \"2017-03-01T00:00:00\",\r\n  \"EndDate\": \"2017-03-05T00:00:00\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:54520/api/roomTypeRates?ids=1&ids=3&ids=2&ids=4&checkin=9/1/2018&checkout=9/5/2018",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54520",
+							"path": [
+								"api",
+								"roomTypeRates"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "1",
+									"equals": true
+								},
+								{
+									"key": "ids",
+									"value": "3",
+									"equals": true
+								},
+								{
+									"key": "ids",
+									"value": "2",
+									"equals": true
+								},
+								{
+									"key": "ids",
+									"value": "4",
+									"equals": true
+								},
+								{
+									"key": "checkin",
+									"value": "9/1/2018",
+									"equals": true
+								},
+								{
+									"key": "checkout",
+									"value": "9/5/2018",
+									"equals": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Reservation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Dates\": {\r\n  \"StartDate\": \"2017-03-01T00:00:00\",\r\n  \"EndDate\": \"2017-03-05T00:00:00\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:54520/api/reservations/jcwyd23d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54520",
+							"path": [
+								"api",
+								"reservations",
+								"jcwyd23d"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Reservation",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"rateId\": 1,\r\n    \"totalAmount\": 800.00\r\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:54520/api/reservations/bb3dt49",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54520",
+							"path": [
+								"api",
+								"reservations",
+								"bb3dt49"
+							]
 						},
 						"description": ""
 					},
@@ -227,54 +442,109 @@
 		},
 		{
 			"name": "Reservations",
-			"description": "",
 			"item": [
 				{
 					"name": "Get All",
 					"request": {
-						"url": "http://localhost:54626/api/reservations",
 						"method": "GET",
 						"header": [],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:54626/api/reservations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54626",
+							"path": [
+								"api",
+								"reservations"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Submit Reservation",
 					"request": {
-						"url": "http://localhost:54626/api/reservations",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "  {\r\n    \"reservationUuid\": \"bb3dt48\",\r\n    \"roomTypeId\": 1,\r\n    \"dates\": {\r\n      \"startDate\": \"2017-05-23T00:00:00\",\r\n      \"endDate\": \"2017-05-27T00:00:00\" }\r\n  }"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:54626/api/reservations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54626",
+							"path": [
+								"api",
+								"reservations"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Set Reservation Rate",
 					"request": {
-						"url": "http://localhost:54626/api/reservations/bb3dt48/rates",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "  {\r\n    \"rate\": 299.0\r\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:54626/api/reservations/bb3dt48/rates",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54626",
+							"path": [
+								"api",
+								"reservations",
+								"bb3dt48",
+								"rates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:54626/api/reservations/jcwyd23d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54626",
+							"path": [
+								"api",
+								"reservations",
+								"jcwyd23d"
+							]
 						},
 						"description": ""
 					},

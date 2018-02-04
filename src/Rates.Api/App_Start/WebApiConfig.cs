@@ -1,12 +1,24 @@
-﻿using System.Web.Http;
+﻿using System.Net.Http.Formatting;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using Newtonsoft.Json.Serialization;
 
-namespace RoomOccupancy.Api
+namespace Rates.Api
 {
 	public static class WebApiConfig
 	{
 		public static void Register(HttpConfiguration config)
 		{
-			// Web API configuration and services
+			var cors = new EnableCorsAttribute("http://localhost:9000", "*", "*");
+			config.EnableCors(cors);
+
+			config.Formatters.Clear();
+			config.Formatters.Add(new JsonMediaTypeFormatter());
+
+			config.Formatters
+				.JsonFormatter
+				.SerializerSettings
+				.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
 			// Web API routes
 			config.MapHttpAttributeRoutes();
@@ -14,7 +26,7 @@ namespace RoomOccupancy.Api
 			config.Routes.MapHttpRoute(
 				"DefaultApi",
 				"api/{controller}/{id}",
-				new {id = RouteParameter.Optional}
+				new { id = RouteParameter.Optional }
 			);
 		}
 	}

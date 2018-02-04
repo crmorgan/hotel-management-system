@@ -1,8 +1,7 @@
 ﻿<template>
-	<h3>${name}</h3>
-	
-	<input value.bind="checkin">
-	<input value.bind="checkout">
-	
-  <button class="btn btn-primary" click.delegate="checkAvailability()">Search</button>
+  <div class="mb-3">
+    <input value.bind="checkin">&nbsp;
+    <input value.bind="checkout">
+  </div>
+    <button class="btn btn-primary" click.delegate="checkAvailability()">Find Rooms</button>
 </template>

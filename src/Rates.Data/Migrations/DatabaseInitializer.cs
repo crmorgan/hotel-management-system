@@ -31,6 +31,8 @@ namespace Rates.Data.Migrations
 	{
 		internal static IEnumerable<RoomRate> GetOneYearOfRates(int roomTypeId)
 		{
+				// Build a collection of room rates containing one rate that is good for a year from now.
+				// Rate amount is calcuated/faked off the room type ids (1-4)
 				yield return new RoomRate
 				{
 					RoomTypeId = roomTypeId,
