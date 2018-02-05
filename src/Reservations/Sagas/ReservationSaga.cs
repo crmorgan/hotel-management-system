@@ -17,7 +17,7 @@ namespace Reservations.Sagas
 		IHandleMessages<PaymentMethodSubmittedEvent>,
 		IHandleMessages<GuestSubmittedEvent>,
 		IHandleMessages<ReservationRateSelectedEvent>,
-		IHandleMessages<PaymentMadeEvent>,
+		IHandleMessages<CreditCardHoldPlacedEvent>,
 		IHandleTimeouts<HoldReservationTimeout>
 	{
 		private static readonly ILog Log = LogManager.GetLogger<ReservationSaga>();
@@ -28,7 +28,7 @@ namespace Reservations.Sagas
 			mapper.ConfigureMapping<PaymentMethodSubmittedEvent>(p => p.PurchaseUuid).ToSaga(s => s.ReservationUuid);
 			mapper.ConfigureMapping<GuestSubmittedEvent>(p => p.ReservationUuid).ToSaga(s => s.ReservationUuid);
 			mapper.ConfigureMapping<ReservationRateSelectedEvent>(p => p.ReservationUuid).ToSaga(s => s.ReservationUuid);
-			mapper.ConfigureMapping<PaymentMadeEvent>(p => p.PurchaseUuid).ToSaga(s => s.ReservationUuid);
+			mapper.ConfigureMapping<CreditCardHoldPlacedEvent>(p => p.PurchaseUuid).ToSaga(s => s.ReservationUuid);
 		}
 
 		public async Task Handle(ReservationSubmittedEvent message, IMessageHandlerContext context)
@@ -61,7 +61,7 @@ namespace Reservations.Sagas
 			Data.ReservationUuid = message.PurchaseUuid;
 			Data.HasPaymentMethod = true;
 
-			await context.Send<MakePaymentCommand>(e =>
+			await context.Send<PlaceHoldOnCreditCardCommand>(e =>
 			{
 				e.PurchaseUuid = message.PurchaseUuid;
 				e.PaymentMethodId = message.PaymentMethodId;
@@ -92,9 +92,9 @@ namespace Reservations.Sagas
 			await ProcessReservation(context);
 		}
 
-		public async Task Handle(PaymentMadeEvent message, IMessageHandlerContext context)
+		public async Task Handle(CreditCardHoldPlacedEvent message, IMessageHandlerContext context)
 		{
-			Log.Info($"Handle PaymentMadeEvent for reservation {message.PurchaseUuid}");
+			Log.Info($"Handle CreditCardHoldPlacedEvent for reservation {message.PurchaseUuid}");
 
 			Data.ReservationUuid = message.PurchaseUuid;
 			Data.HasCancellationFeeHold = true;

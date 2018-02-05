@@ -2,7 +2,7 @@
 
 namespace ITOps.Messages.Events
 {
-	public class PaymentMadeEvent : IEvent
+	public class CreditCardHoldPlacedEvent : IEvent
 	{
 		public string PurchaseUuid { get; set; }
 	}

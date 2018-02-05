@@ -41,8 +41,8 @@ namespace Reservations.Config
 			var routing = transport.Routing();
 			routing.RegisterPublisher(typeof(PaymentMethodSubmittedEvent), "HMS.Finance");
 			routing.RegisterPublisher(typeof(GuestSubmittedEvent), "HMS.Guests");
-			routing.RegisterPublisher(typeof(PaymentMadeEvent), "HMS.ITOps");
-			routing.RouteToEndpoint(typeof(MakePaymentCommand), "HMS.ITOps");
+			routing.RegisterPublisher(typeof(CreditCardHoldPlacedEvent), "HMS.ITOps");
+			routing.RouteToEndpoint(typeof(PlaceHoldOnCreditCardCommand), "HMS.ITOps");
 		}
 	}
 }

@@ -35,7 +35,7 @@ namespace ITOps.Config
 				.ConnectionString("deadLetter=false;journal=false");
 
 			//var routing = transport.Routing();
-			//routing.RouteToEndpoint(typeof(PaymentMadeEvent), "HMS.ServiceName");
+			//routing.RouteToEndpoint(typeof(CreditCardHoldPlacedEvent), "HMS.ServiceName");
 		}
 	}
 }

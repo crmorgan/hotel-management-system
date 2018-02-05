@@ -69,6 +69,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rates", "Rates\Rates.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rates.Messages", "Rates.Messages\Rates.Messages.csproj", "{F7B17DC6-8941-40F0-A558-52783F9BD156}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rates.Integration", "Rates.Integration\Rates.Integration.csproj", "{56A8E4A5-D960-4286-855C-955897726997}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -179,6 +181,10 @@ Global
 		{F7B17DC6-8941-40F0-A558-52783F9BD156}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7B17DC6-8941-40F0-A558-52783F9BD156}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7B17DC6-8941-40F0-A558-52783F9BD156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A8E4A5-D960-4286-855C-955897726997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A8E4A5-D960-4286-855C-955897726997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A8E4A5-D960-4286-855C-955897726997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A8E4A5-D960-4286-855C-955897726997}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -209,5 +215,6 @@ Global
 		{DB383CF1-1065-4E05-A2CC-A780CB5F9886} = {1829CE98-63AA-40EC-8849-7A53A6C4538A}
 		{7409B651-40DA-4273-A550-2B212E39A97A} = {8A4880D0-2DC2-4D52-A4CE-DB29D9791EB6}
 		{F7B17DC6-8941-40F0-A558-52783F9BD156} = {8A4880D0-2DC2-4D52-A4CE-DB29D9791EB6}
+		{56A8E4A5-D960-4286-855C-955897726997} = {8A4880D0-2DC2-4D52-A4CE-DB29D9791EB6}
 	EndGlobalSection
 EndGlobal

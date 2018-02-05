@@ -24,12 +24,12 @@ namespace Availability.Config
 
 		private void InitializeDatbase()
 		{
-			Log.Debug("Initializing database");
+			Log.Info("Initializing database");
 
 			var context = new RoomAvailabilityContext();
 			var roomTypes = context.RoomTypeAvailability.ToList();
 
-			Log.DebugFormat("Database initialized, first room type is {0}", roomTypes.First().Id);
+			Log.InfoFormat("Database initialized, first room type is {0}", roomTypes.First().Id);
 		}
 
 		public void Customize(EndpointConfiguration endpointConfiguration)
