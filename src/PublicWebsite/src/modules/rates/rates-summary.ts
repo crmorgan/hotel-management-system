@@ -50,7 +50,7 @@ export class RatesSummary {
 
   private createPutReservationPayload(rateId: number, totalAmount: number) {
     return {
-      "rateId": rateId,
+      "roomRateId": rateId,
       "totalAmount": totalAmount,
     }
   }

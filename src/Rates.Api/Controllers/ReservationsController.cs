@@ -41,7 +41,7 @@ namespace Rates.Api.Controllers
 		    await _endpoint.Send(new BookReservationCommand
 		    {
 			    ReservationUuid = id,
-			    RateId = model.RateId,
+			    RateId = model.RoomRateId,
 			    TotalAmount = model.TotalAmount
 		    });
 
@@ -72,7 +72,7 @@ namespace Rates.Api.Controllers
 	public class BookReservation
 	{
 		[Required]
-		public int RateId { get; set; }
+		public int RoomRateId { get; set; }
 
 		[Required]
 		public decimal TotalAmount { get; set; }

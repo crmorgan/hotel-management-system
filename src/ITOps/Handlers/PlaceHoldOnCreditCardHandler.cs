@@ -18,6 +18,8 @@ namespace ITOps.Handlers
 			Log.Info("Handle PlaceHoldOnCreditCardCommand");
 
 			var reservationRatesTotal = ReservationRateTotalProvider.GetRateTotal(message.PurchaseUuid);
+			// would use the Finance service here to get the credit card info using the PurchaseUuid
+
 			var amountToHold = CalculateHoldAmount(reservationRatesTotal);
 
 			Log.Info($"Credit card hold placed for purchase '{message.PurchaseUuid}' holding {amountToHold:C}");
@@ -29,14 +31,14 @@ namespace ITOps.Handlers
 
 		private static int CalculateHoldAmount(decimal reservationRatesTotal)
 		{
-			return (int) Math.Round((double)reservationRatesTotal / 100 * 10, 2);
+			const double holdPercent = 10;
+			return (int) Math.Round((double)reservationRatesTotal / 100 * holdPercent, 2);
 		}
 
 
 		private async Task PlaceHold(string paymentMethodId, decimal amount)
 		{
-			if (amount == 72.00m)  // this a four night stay in the 1 King Bed Suite
-				 
+			if (amount == 72.00m)  // Book a four night stay in the 1 King Bed Suite to trigger this
 			{
 				Log.Error("Simulating the external payment gateway system being down.");
 				throw new Exception("The payment gateway did not respond.");

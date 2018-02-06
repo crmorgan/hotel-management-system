@@ -24,7 +24,7 @@ namespace Rates.Handlers
 			var reservation = new Reservation
 			{
 				ReservationUuid = message.ReservationUuid,
-				RateId = message.RateId,
+				RoomRateId = message.RateId,
 				TotalAmount = message.TotalAmount
 			};
 

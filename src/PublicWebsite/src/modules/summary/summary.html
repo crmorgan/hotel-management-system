@@ -1,16 +1,18 @@
 ﻿<template>
-  <h1>Your Reservation Summary</h1>
+  <h1>Guest and Payment</h1>
 
   <require from="../rates/rates-summary"></require>
   <require from="../guests/guests"></require>
   <require from="../payment/payment"></require>
 
+  <h4>Reservation Summary</h4>
   <rates-summary></rates-summary>
+  <hr/>
   <br/>
   <guests></guests>
   <br/>
   <payments></payments>
   <br/>
   <br/>
-  <button class="btn btn-success" click.delegate="book()">Book Now</button>
+  <button class="btn btn-lg btn-block btn-success mb-5" click.delegate="book()">Book Now</button>
 </template>
