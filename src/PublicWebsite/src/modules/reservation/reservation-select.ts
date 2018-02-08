@@ -2,6 +2,7 @@
 import {HttpClient, json} from 'aurelia-fetch-client';
 import shoppingCart from "../../shoppingCart";
 import {Router} from 'aurelia-router';
+var uniqid = require('uniqid');
 
 @autoinject()
 export class ReservationSelect {
@@ -11,8 +12,10 @@ export class ReservationSelect {
 		
 	}
 
-	select() {
-		shoppingCart.roomTypeId = this.roomTypeId;
+	bookRoom() {
+    shoppingCart.reservationUuid = uniqid();
+    shoppingCart.roomTypeId = this.roomTypeId;
+
 		let url = 'http://localhost:54626/api/reservations';
 		let body = {
 			"reservationUuid": shoppingCart.reservationUuid,

@@ -25,12 +25,7 @@ export class Search {
 		});
 	}
 
-	checkAvailability() {
-		shoppingCart.checkin = new Date(this.checkin);
-		shoppingCart.checkout = new Date(this.checkout);
-		shoppingCart.reservationUuid = uniqid();
-		shoppingCart.numberOfNights = new Date(shoppingCart.checkout.getTime() - shoppingCart.checkin.getTime()).getUTCDate() -1;
-
+	findRooms() {
 		let url = 'http://localhost:50673/api/' + 'RoomTypeAvailability?dates.startDate=' + this.checkin + '&dates.endDate=' + this.checkout;
 
 		this.httpClient
