@@ -26,6 +26,9 @@ export class Search {
 	}
 
 	findRooms() {
+		shoppingCart.checkin = new Date(this.checkin);
+		shoppingCart.checkout = new Date(this.checkout);
+
 		let url = 'http://localhost:50673/api/' + 'RoomTypeAvailability?dates.startDate=' + this.checkin + '&dates.endDate=' + this.checkout;
 
 		this.httpClient

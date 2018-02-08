@@ -1,6 +1,6 @@
 ﻿import { autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
-import { BookingState } from './BookingState';
+import { BookingState } from '../../modules/reservation/BookingState';
 import { Router } from 'aurelia-router';
 
 export const Events = {
