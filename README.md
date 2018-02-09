@@ -87,16 +87,16 @@ A guest can enter the dates they want to stay and see what room types are availa
 ## Make a Reservation
 After a guest has selected a room type they can enter their personal information and specify a credit card to reserve a room.
 
-## Guest Check in
+### Guest Check in
 Coming soon:  A hotel reception desk employee will be able to find a guest's reservation assign them to a room in the hotel and update the credit card's hold amount.
 
 ### Guest Checkout
 Coming soon:  A check-out process will generate a guest's final invoice for their stay and charge the guest's credit card.
 
 ## The Services
-In the context of this system a *Service* is the technical authority for a business context.  All data and business rules reside in and are owned by a Service.  They are a logical concept, not a physical one, so they can be everywhere from the UI to the database.  
+In the context of this system a *Service* is the technical authority for a business context and owns all business rules and data.  They are a logical concept, not a physical one, so they can be everywhere from the UI to the database.  
 
-In this system a Service will typically a UI component, an ASP.NET Web API, an NServiceBus host, and a database.
+In this system a Service will typically have a UI component, ASP.NET Web API, NServiceBus host, and a database.
 
 1. Availability
 2. Rates
