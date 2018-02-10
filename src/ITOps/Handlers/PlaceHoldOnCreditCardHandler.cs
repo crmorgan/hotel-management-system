@@ -15,7 +15,7 @@ namespace ITOps.Handlers
 
 		public async Task Handle(PlaceHoldOnCreditCardCommand message, IMessageHandlerContext context)
 		{
-			Log.Info("Handle PlaceHoldOnCreditCardCommand");
+			Log.Info($"Handle PlaceHoldOnCreditCardCommand for reservation {message.PurchaseUuid}");
 
 			var reservationRatesTotal = ReservationRateTotalProvider.GetRateTotal(message.PurchaseUuid);
 			// would use the Finance service here to get the credit card info using the PurchaseUuid
@@ -44,8 +44,8 @@ namespace ITOps.Handlers
 				throw new Exception("The payment gateway did not respond.");
 			}
 
-			Log.Info("Simulating calling a slow (30 seconds) external payment gateway API to place a hold.");
-			await Task.Delay(30000);
+			Log.Info("Simulating calling a slow (15 seconds) external payment gateway API to place a hold.");
+			await Task.Delay(15000);
 
 			Log.Info("Call to payment gateway completed.");
 		}

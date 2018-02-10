@@ -43,6 +43,7 @@ namespace Reservations.Config
 			routing.RegisterPublisher(typeof(GuestSubmittedEvent).Assembly, "HMS.Guests");
 			routing.RegisterPublisher(typeof(ReservationSubmittedEvent).Assembly, "HMS.Reservations");
 			routing.RouteToEndpoint(typeof(BookReservationCommand), "HMS.Reservations");
+			routing.RouteToEndpoint(typeof(AbandonReservationCommand), "HMS.Reservations");
 			routing.RegisterPublisher(typeof(CreditCardHoldPlacedEvent), "HMS.ITOps");
 			routing.RouteToEndpoint(typeof(PlaceHoldOnCreditCardCommand), "HMS.ITOps");
 		}

@@ -110,10 +110,10 @@ namespace Reservations.Sagas
 			{
 				Log.Info($" -- All data has been collected for reservation {Data.ReservationUuid}");
 
-				await context.Send<BookReservationCommand>(e =>
-				{
-					e.ReservationUuid = Data.ReservationUuid;
-				});
+				//await context.Send<BookReservationCommand>(e =>
+				//{
+				//	e.ReservationUuid = Data.ReservationUuid;
+				//});
 			}
 			else
 			{
