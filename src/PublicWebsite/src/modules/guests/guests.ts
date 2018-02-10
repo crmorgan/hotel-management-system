@@ -30,7 +30,7 @@ export class Guests {
 
   submitGuest() {
     console.log(`submitting guest for reservation ${shoppingCart.reservationUuid}`);
-    let url = 'http://localhost:50551/api/guests';
+    let url = `http://localhost:50551/api/guests/${uniqid()}`;
     let body = this.createGuestPayload();
 
     this.sendGuestRequest(url, body);
@@ -38,7 +38,6 @@ export class Guests {
 
   private createGuestPayload() {
     return {
-      "guestUuid": uniqid(),
       "reservationUuid": shoppingCart.reservationUuid,
       "title": this.title,
       "firstName": this.firstName,

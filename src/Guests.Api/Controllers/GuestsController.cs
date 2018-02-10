@@ -36,13 +36,13 @@ namespace Guests.Api.Controllers
 		    return Ok(guest);
 	    }
 
-	    public async Task<IHttpActionResult> Put(SubmitGuest model)
+	    public async Task<IHttpActionResult> Put(string id, SubmitGuest model)
 	    {
 		    if(!ModelState.IsValid) return BadRequest(ModelState);
 
 			await _endpoint.Send(new SubmitGuestCommand
 			{
-				GuestUuid = model.GuestUuid,
+				GuestUuid = id,
 				ReservationUuid = model.ReservationUuid,
 				Title = model.Title,
 				FirstName = model.FirstName,
@@ -51,17 +51,16 @@ namespace Guests.Api.Controllers
 				Address = new Messages.Commands.Address
 				{
 					Line1 = model.Address.Line1,
-					Line2 = model.Address.Line2,
 					City = model.Address.City,
 					State = model.Address.State,
 					Zip = model.Address.Zip
 				}
 			});
 
-			return CreatedAtRoute(
-				"DefaultApi",
-				new { controller = "payments", id = model.GuestUuid },
-				$"Guest {model.GuestUuid} created.");
+		    return CreatedAtRoute(
+			    "DefaultApi",
+			    new {controller = "guests", id},
+			    $"Guest {id} created.");
 	    }
     }
 }

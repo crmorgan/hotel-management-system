@@ -123,10 +123,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"guestUuid\": \"ii6lo61\",\r\n  \"reservationUuid\": \"ii5lo61\",\r\n  \"title\": \"Mr.\",\r\n  \"firstName\": \"Guest\",\r\n  \"lastName\": \"Test\",\r\n  \"email\": \"gman@test.com\",\r\n  \"address\": {\r\n\t  \"line1\": \"1234 Any street\",\r\n\t  \"city\": \"Denver\",\r\n\t  \"state\": \"CO\",\r\n\t  \"zip\": \"80202\"\r\n\t}\r\n}"
+							"raw": "{\r\n  \"reservationUuid\": \"ii5lo61\",\r\n  \"title\": \"Mr.\",\r\n  \"firstName\": \"Guest\",\r\n  \"lastName\": \"Test\",\r\n  \"email\": \"gman@test.com\",\r\n  \"address\": {\r\n\t  \"line1\": \"1234 Any street\",\r\n\t  \"city\": \"Denver\",\r\n\t  \"state\": \"CO\",\r\n\t  \"zip\": \"80202\"\r\n\t}\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:50551/api/guests",
+							"raw": "http://localhost:50551/api/guests/ii6lo61",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -134,7 +134,8 @@
 							"port": "50551",
 							"path": [
 								"api",
-								"guests"
+								"guests",
+								"ii6lo61"
 							]
 						}
 					},
@@ -293,10 +294,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"paymentMethodUuid\": \"x3hp56tl\",\n\t\"purchaseUuid\": \"8b35fae4\",\n\t\"card\":{\n\t\t\"cardHolderName\": \"John Smith\",\n\t\t\"number\": \"371449635398431\",\n\t\t\"typeId\": 1,\n\t\t\"expiration\": \"4/20\"\n\t}\n}"
+							"raw": "{\n\t\"purchaseUuid\": \"8b35fae4\",\n\t\"card\":{\n\t\t\"cardHolderName\": \"John Smith\",\n\t\t\"number\": \"371449635398431\",\n\t\t\"typeId\": 1,\n\t\t\"expiration\": \"4/20\"\n\t}\n}"
 						},
 						"url": {
-							"raw": "http://localhost:52507/api/paymentmethods",
+							"raw": "http://localhost:52507/api/paymentmethods/x3hp56tl",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -304,7 +305,8 @@
 							"port": "52507",
 							"path": [
 								"api",
-								"paymentmethods"
+								"paymentmethods",
+								"x3hp56tl"
 							]
 						}
 					},
@@ -391,7 +393,7 @@
 							"raw": "{\r\n  \"Dates\": {\r\n  \"StartDate\": \"2017-03-01T00:00:00\",\r\n  \"EndDate\": \"2017-03-05T00:00:00\"\r\n  }\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:54520/api/reservations/jcwyd23d",
+							"raw": "http://localhost:54520/api/reservations/jd7z3p4v",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -400,7 +402,7 @@
 							"path": [
 								"api",
 								"reservations",
-								"jcwyd23d"
+								"jd7z3p4v"
 							]
 						},
 						"description": ""

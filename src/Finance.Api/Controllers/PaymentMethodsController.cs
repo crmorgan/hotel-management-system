@@ -35,13 +35,13 @@ namespace Finance.Api.Controllers
 			return Ok(payment);
 		}
 
-		public async Task<IHttpActionResult> Put(PaymentMethod paymentMethod)
+		public async Task<IHttpActionResult> Put(string id, PaymentMethod paymentMethod)
 		{
 			if (!ModelState.IsValid) return BadRequest(ModelState);
 
 			await _endpoint.Send(new SubmitPaymentMethodCommand
 			{
-				Id = paymentMethod.PaymentMethodUuid,
+				Id = id,
 				PurchaseUuid = paymentMethod.PurchaseUuid,
 				PaymentMethod = new Messages.Commands.CreditCard
 				{
@@ -54,8 +54,8 @@ namespace Finance.Api.Controllers
 
 			return CreatedAtRoute(
 				"DefaultApi",
-				new {controller = "paymentMethods", id = paymentMethod.PaymentMethodUuid},
-				$"Payment method {paymentMethod.PaymentMethodUuid} created.");
+				new {controller = "paymentMethods", id},
+				$"Payment method {id} created.");
 		}
 	}
 }

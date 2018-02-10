@@ -26,7 +26,7 @@ export class Payments {
 
   submitPayment() {
     console.log(`submitting payment for reservation ${shoppingCart.reservationUuid}`);
-    let url = 'http://localhost:59119/api/paymentMethods';
+    let url = `http://localhost:59119/api/paymentMethods/${uniqid()}`;
     let body = this.createPaymentPayload();
 
     this.sendPaymentRequest(url, body)
@@ -34,7 +34,6 @@ export class Payments {
 
   private createPaymentPayload() {
     return {
-      "paymentMethodUuid": uniqid(),
       "purchaseUuid": shoppingCart.reservationUuid,
       "card": {
         "cardHolderName": this.cardHolderName,
