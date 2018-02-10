@@ -1,18 +1,19 @@
 ﻿<template>
-  <h1>Guest and Payment</h1>
-
   <require from="../../modules/rates/rates-summary"></require>
   <require from="../../modules/guests/guests"></require>
-  <require from="../../modules/payment/payment"></require>
-
-  <h4>Reservation Summary</h4>
-  <rates-summary></rates-summary>
-  <hr/>
+  <require from="../../modules/finance/payment"></require>
+  <h2>Checkout</h2>
   <br/>
+  <h4>Guest name and address</h4>
   <guests></guests>
   <br/>
+  <hr/>
+  <h4>Payment method</h4>
   <payments></payments>
   <br/>
+  <hr/>
+  <h4>Review your stay</h4>
+  <rates-summary></rates-summary>
   <br/>
-  <button class="btn btn-lg btn-block btn-success mb-5" click.delegate="book()">Book Now</button>
+  <button class="btn btn-lg btn-block btn-success" click.delegate="book()">Book Room</button>
 </template>

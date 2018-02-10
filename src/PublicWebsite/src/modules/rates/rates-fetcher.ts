@@ -2,11 +2,10 @@
 import {autoinject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import shoppingCart from "../../shoppingCart";
-
+import {RatesEvent} from "../rates/rates-event";
 
 const Events = {
-  RoomTypeIdsAvailable: 'RoomTypeIdsAvailable',
-  RatesFetched: 'RatesFetched'
+  RoomTypeIdsAvailable: 'RoomTypeIdsAvailable'
 }
 
 @autoinject()
@@ -30,7 +29,7 @@ export class RatesFetcher {
 				return response.json();
 			})
 			.then(data => {
-				this.messageBus.publish(Events.RatesFetched, data);
+				this.messageBus.publish(RatesEvent.RatesFetched, data);
 			});
 	}
 }

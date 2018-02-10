@@ -8,7 +8,7 @@
 
 
   <div class="jumbotron">
-    <h1 class="display-3">Find your perfect room</h1>
+    <h1 class="display-4">Find your perfect room</h1>
     <p class="lead">Check our rates and availability to find that perfect room for your next vacation.</p>
     <hr class="my-4">
     <p>Just tell us when you would like to stay</p>
@@ -20,16 +20,15 @@
     <room-content-fetcher></room-content-fetcher>
 
     <div class="row align-items-left mb-4" repeat.for="roomTypeId of roomTypeIds">
-      <div class="col-lg">
+      <div class="col">
         <room-content room-type-id.bind="roomTypeId"></room-content>
       </div>
-      <div class="col-lg  align-self-center">
+      <div class="col  align-self-center">
         <rates room-type-id.bind="roomTypeId"></rates>
       </div>
-      <div class="col-lg  align-self-center">
+      <div class="col align-self-center">
         <reservation-select room-type-id.bind="roomTypeId"></reservation-select>
       </div>
-      <div class="col-lg-5"></div>
     </div>
   </div>
 </template>

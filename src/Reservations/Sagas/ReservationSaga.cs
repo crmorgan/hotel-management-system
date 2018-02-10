@@ -1,5 +1,6 @@
 ﻿using Finance.Messages.Events;
 using Guests.Messages.Events;
+using ITOps.Messages.Commands;
 using ITOps.Messages.Events;
 using NServiceBus;
 using NServiceBus.Logging;
@@ -8,7 +9,6 @@ using Reservations.Messages.Events;
 using System;
 using System.Configuration;
 using System.Threading.Tasks;
-using ITOps.Messages.Commands;
 
 namespace Reservations.Sagas
 {
@@ -56,7 +56,7 @@ namespace Reservations.Sagas
 
 		public async Task Handle(PaymentMethodSubmittedEvent message, IMessageHandlerContext context)
 		{
-			Log.Info($"Handle PaymentMethodSubmittedEvent for reservation {message.PurchaseUuid}");
+			Log.Info($"Handle PaymentMethodSubmittedEvent for reservation {message.PurchaseUuid} with payment method id {message.PaymentMethodId} ");
 
 			Data.ReservationUuid = message.PurchaseUuid;
 			Data.HasPaymentMethod = true;
@@ -74,7 +74,7 @@ namespace Reservations.Sagas
 
 		public async Task Handle(GuestSubmittedEvent message, IMessageHandlerContext context)
 		{
-			Log.Info($"Handle GuestSubmittedEvent for reservation {message.ReservationUuid}");
+			Log.Info($"Handle GuestSubmittedEvent for reservation {message.ReservationUuid} with guest id {message.GuestUuid}");
 
 			Data.ReservationUuid = message.ReservationUuid;
 			Data.HasGuest = true;
@@ -104,18 +104,20 @@ namespace Reservations.Sagas
 
 		private async Task ProcessReservation(IMessageHandlerContext context)
 		{
-			if (Data.HasCancellationFeeHold)
+			Log.Info($"Checking reservation {Data.ReservationUuid} to see if all required data has been collected");
+
+			if (Data.HasRequiredData)
 			{
-				Log.Info($"Hold for cancellation fee payment approved for reservation '{Data.ReservationUuid}' sending confirmation email to guest.");
-			}
-			else if (Data.HasRequiredData)
-			{
-				Log.Info($"All reservation data has been collected and reservation is being booked {Data.ReservationUuid}.");
+				Log.Info($" -- All data has been collected for reservation {Data.ReservationUuid}");
 
 				await context.Send<BookReservationCommand>(e =>
 				{
 					e.ReservationUuid = Data.ReservationUuid;
 				});
+			}
+			else
+			{
+				Log.Info(" -- Still need additional data");
 			}
 		}
 

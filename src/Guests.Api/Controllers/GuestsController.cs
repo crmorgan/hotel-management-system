@@ -1,14 +1,14 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using System.Web.Http;
-using Guests.Api.Models;
+﻿using Guests.Api.Models;
 using Guests.Data.Context;
 using Guests.Messages.Commands;
 using NServiceBus;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace Guests.Api.Controllers
 {
-    public class GuestsController : ApiController
+	public class GuestsController : ApiController
     {
 		private readonly IGuestsContext _context;
 		private readonly IEndpointInstance _endpoint;
@@ -61,7 +61,7 @@ namespace Guests.Api.Controllers
 			return CreatedAtRoute(
 				"DefaultApi",
 				new { controller = "payments", id = model.GuestUuid },
-				$"Charge {model.GuestUuid} created.");
+				$"Guest {model.GuestUuid} created.");
 	    }
     }
 }

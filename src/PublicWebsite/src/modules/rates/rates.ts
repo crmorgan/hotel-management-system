@@ -1,10 +1,7 @@
 ﻿import {EventAggregator} from 'aurelia-event-aggregator'
 import {autoinject, bindable} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
-
-const Events = {
-  RatesFetched: 'RatesFetched'
-}
+import {RatesEvent} from "../rates/rates-event";
 
 @autoinject()
 export class Rates {
@@ -12,8 +9,7 @@ export class Rates {
 	rate;
 
 	constructor(private messageBus: EventAggregator, private apiClient: HttpClient) {
-		this.messageBus.subscribe(Events.RatesFetched, response => {
-			console.log("rates fetched subscribed"); 
+		this.messageBus.subscribe(RatesEvent.RatesFetched, response => {
 			this.rate = this.getRate(response);
 		});
 	}

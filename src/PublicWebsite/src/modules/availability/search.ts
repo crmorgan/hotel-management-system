@@ -2,11 +2,9 @@
 import {HttpClient} from 'aurelia-fetch-client';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import shoppingCart from "../../shoppingCart";
+import {AvailabilityEvent} from "../availability/availability-event";
 var uniqid = require('uniqid');
 
-const Events = {
-  RoomTypeIdsAvailable: 'RoomTypeIdsAvailable'
-}
 
 @autoinject()
 export class Search {
@@ -37,8 +35,7 @@ export class Search {
 				return response.json();
 			})
 			.then(data => {
-				console.log(data);
-				this.messageBus.publish(Events.RoomTypeIdsAvailable, data);
+				this.messageBus.publish(AvailabilityEvent.RoomTypeIdsAvailable, data);
 			});
 	}
 }

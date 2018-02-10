@@ -15,7 +15,6 @@ export class RoomContent {
 
 	constructor(private messageBus: EventAggregator, private apiClient: HttpClient) {
 		this.messageBus.subscribe(Events.RoomContentFetched, data => {
-			console.log(data);
 			let content = this.getRoomContent(data);
 			this.description = content.Description;
 			this.imageUrl = content.ImageUrl;

@@ -1,4 +1,3 @@
-using System;
 using NServiceBus;
 
 namespace Reservations.Sagas
@@ -12,6 +11,6 @@ namespace Reservations.Sagas
 		public bool HasGuest { get; set; }
 		public bool HasRate { get; set; }
 		public bool HasCancellationFeeHold { get; set; }
-		public bool HasRequiredData => IsReservationSubmitted && HasPaymentMethod && HasGuest && HasRate;
+		public bool HasRequiredData => IsReservationSubmitted && HasPaymentMethod && HasGuest && HasRate && HasCancellationFeeHold;
 	}
 }

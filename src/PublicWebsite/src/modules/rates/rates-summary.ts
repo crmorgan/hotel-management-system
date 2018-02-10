@@ -2,12 +2,8 @@
 import { autoinject, bindable } from 'aurelia-framework';
 import { HttpClient, json } from 'aurelia-fetch-client';
 import shoppingCart from "../../shoppingCart";
+import { RatesEvent } from "../rates/rates-event";
 
-const Events = {
-  RatesFetched: 'RatesFetched',
-  RatesSummaryFetched: 'RatesSummaryFetched',
-  RateSubmitted: 'RateSubmitted'
-}
 
 @autoinject()
 export class RatesSummary {
@@ -30,8 +26,6 @@ export class RatesSummary {
       .then(response => response.json())
       .then(data => {
         let rate = data[0];
-
-        // this.messageBus.publish(Events.RatesSummaryFetched, rate);
 
         this.nightlyRate = rate.amount;
         this.totalAmount = rate.amount * shoppingCart.numberOfNights;
@@ -62,7 +56,7 @@ export class RatesSummary {
     })
       .then(response => response.json())
       .then(data => {
-        this.messageBus.publish(Events.RateSubmitted);
+        this.messageBus.publish(RatesEvent.RateSubmitted);
       });
   }
 }

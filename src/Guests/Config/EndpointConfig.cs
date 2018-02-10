@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-using Guests.Data.Context;
+﻿using Guests.Data.Context;
 using NServiceBus;
 using NServiceBus.Logging;
+using System;
+using System.Linq;
 
 namespace Guests.Config
 {
@@ -23,18 +23,13 @@ namespace Guests.Config
 
 		private void InitializeDatbase()
 		{
-			Log.Info("Initializing database");
-
 			var context = new GuestsContext();
 			var count = context.Guests.Count();
-
-			Log.InfoFormat($"Database initialized with {count} guests");
+			Log.InfoFormat($"Guest database initialized and has {count} guest records");
 		}
 
 		public void Customize(EndpointConfiguration endpointConfiguration)
 		{
-			Log.Info("Customize...");
-
 			var container = ContainerSetup.Create();
 
 			endpointConfiguration.UseSerialization<JsonSerializer>();
@@ -46,7 +41,5 @@ namespace Guests.Config
 			endpointConfiguration.AuditProcessedMessagesTo("audit");
 			endpointConfiguration.EnableInstallers();
 		}
-
-		
 	}
 }

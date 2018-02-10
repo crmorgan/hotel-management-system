@@ -14,9 +14,7 @@ export class RoomContentFetcher {
 	roomTypeIds;
 
 	constructor(private messageBus: EventAggregator, private apiClient: HttpClient) {
-		console.log("room-content constructor");
 		this.messageBus.subscribe(Events.RoomTypeIdsAvailable, response => {
-			// this.roomTypeIds = response;
 			this.makeApiRequest(response);
 		});
 	}

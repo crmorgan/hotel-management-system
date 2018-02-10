@@ -16,6 +16,8 @@ export class ReservationSelect {
     shoppingCart.reservationUuid = uniqid();
     shoppingCart.roomTypeId = this.roomTypeId;
 
+    console.log(`Reservation UUID ${shoppingCart.reservationUuid} added to cart`)
+
 		let url = 'http://localhost:54626/api/reservations';
 		let body = {
 			"reservationUuid": shoppingCart.reservationUuid,
@@ -32,7 +34,7 @@ export class ReservationSelect {
 		})
 		.then(response => response.json())
 		.then(data => {
-			this.router.navigate("summary");
+			this.router.navigate("checkout/summary");
 		});
 	}
 }

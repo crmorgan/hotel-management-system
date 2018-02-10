@@ -1,10 +1,10 @@
-﻿using System.Linq;
+﻿using Finance.Api.Models;
+using Finance.Data.Context;
+using Finance.Messages.Commands;
+using NServiceBus;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Finance.Data.Context;
-using NServiceBus;
-using Finance.Api.Models;
-using Finance.Messages.Commands;
 
 namespace Finance.Api.Controllers
 {
@@ -35,27 +35,27 @@ namespace Finance.Api.Controllers
 			return Ok(payment);
 		}
 
-		public async Task<IHttpActionResult> Put(PaymentMethod charge)
+		public async Task<IHttpActionResult> Put(PaymentMethod paymentMethod)
 		{
 			if (!ModelState.IsValid) return BadRequest(ModelState);
 
 			await _endpoint.Send(new SubmitPaymentMethodCommand
 			{
-				Id = charge.PaymentMethodUuid,
-				PurchaseUuid = charge.PurchaseUuid,
+				Id = paymentMethod.PaymentMethodUuid,
+				PurchaseUuid = paymentMethod.PurchaseUuid,
 				PaymentMethod = new Messages.Commands.CreditCard
 				{
-					CardHolderName = charge.Card.CardHolderName,
-					AccountNumber = charge.Card.Number,
-					TypeId = charge.Card.TypeId,
-					Expiration = charge.Card.Expiration
+					CardHolderName = paymentMethod.Card.CardHolderName,
+					AccountNumber = paymentMethod.Card.Number,
+					TypeId = paymentMethod.Card.TypeId,
+					Expiration = paymentMethod.Card.Expiration
 				}
 			});
 
 			return CreatedAtRoute(
 				"DefaultApi",
-				new {controller = "payments", id = charge.PaymentMethodUuid},
-				$"Charge {charge.PaymentMethodUuid} created.");
+				new {controller = "paymentMethods", id = paymentMethod.PaymentMethodUuid},
+				$"Payment method {paymentMethod.PaymentMethodUuid} created.");
 		}
 	}
 }

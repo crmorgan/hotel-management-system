@@ -1,6 +1,6 @@
-﻿using System;
-using NServiceBus;
+﻿using NServiceBus;
 using NServiceBus.Logging;
+using System;
 
 namespace Rates.Config
 {
@@ -26,15 +26,11 @@ namespace Rates.Config
 			endpointConfiguration.UseSerialization<JsonSerializer>();
 			endpointConfiguration.Recoverability().Delayed(c => c.NumberOfRetries(0));
 			endpointConfiguration.UseContainer<AutofacBuilder>(c => c.ExistingLifetimeScope(container));
+			endpointConfiguration.UseTransport<MsmqTransport>().ConnectionString("deadLetter=false;journal=false");
 			endpointConfiguration.UsePersistence<InMemoryPersistence>();
 			endpointConfiguration.SendFailedMessagesTo("error");
 			endpointConfiguration.AuditProcessedMessagesTo("audit");
 			endpointConfiguration.EnableInstallers();
-
-			var transport = endpointConfiguration.UseTransport<MsmqTransport>()
-				.ConnectionString("deadLetter=false;journal=false");
-
-			var routing = transport.Routing();
 		}
 	}
 }
