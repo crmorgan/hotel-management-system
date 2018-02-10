@@ -81,26 +81,31 @@ You should now have several NServiceBus process hosts running as console applica
 ## Use Cases
 This system simulates the process someone would go though to book a reservation and stay at a hotel.
 
-### Find a Room
+#### Find a Room
 A guest can enter the dates they want to stay and see what room types are available and their prices.
 
-## Make a Reservation
+#### Make a Reservation
 After a guest has selected a room type they can enter their personal information and specify a credit card to reserve a room.
 
-### Guest Check in
+#### Guest Check in
 Coming soon:  A hotel reception desk employee will be able to find a guest's reservation assign them to a room in the hotel and update the credit card's hold amount.
 
-### Guest Checkout
+#### Guest Checkout
 Coming soon:  A check-out process will generate a guest's final invoice for their stay and charge the guest's credit card.
 
 ## Services
 In the context of this system a *Service* is defined as the technical authority for a business capability and all business rules and data reside in the service.  In this code base a service will typically consist of a UI component, an ASP.NET Web API, a NServiceBus host, and a database.  For more information on service boundaries watch [Finding Service Boundaries – illustrated in healthcare by Udi Dahan](https://vimeo.com/album/3715841/video/113515335)
 
+### Business Services
+The system consists of the following six services:
 1. Availability
 2. Rates
 3. Guests
 4. Finance
 5. Marketing
 6. Reservation
-7. ITOps
-8. Branding
+
+### Technical Services
+There are two special services that handle infrastructure and the web site's look and feel: 
+1. ITOps
+2. Branding
