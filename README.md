@@ -4,7 +4,7 @@ Udi Dahan's [Advanced Distributed Systems Design Course](https://particular.net
 The problem domain is that of a boutique hotel with the main operations of a hotel such as booking, front desk operations and check-out.  The use cases of the domain are detailed in the *Use Cases* section below.  This domain was chosen because it was a homework assignment in the ADSD course and most people are familar with the general process.
 
 ## Setting up your development environment
-a
+
 To run everything in this project you will need to have the following:
 
 - [NodeJS](https://nodejs.org "NodeJS") 6.0 or higher
@@ -14,7 +14,7 @@ To run everything in this project you will need to have the following:
 - Microsoft MSMQ
 
 The specific setup steps for each of these are detailed below.
-d
+
 ### Node and NPM
 Install both [NodeJS](https://nodejs.org "NodeJS") and [NPM](https://www.npmjs.com/ "NPM") using the standard instructions provided on their sites. 
 
@@ -24,7 +24,7 @@ The client side application is a Single Page Application (SPA) built using the 
 1. Open a Windows command prompt and go to the `src/PublicWebsite` directory
 1. Execute the following command: `npm install` or: `yarn install`
 
-n### MSMQ and MSDTC
+### MSMQ and MSDTC
 To ensure MSMQ and MSDTC are installed.
 
 1. Download and run the [Particular Platform Installer](https://particular.net/start-platform-download).
@@ -34,7 +34,7 @@ To ensure MSMQ and MSDTC are installed.
 ### RavenDB
 
 1. Download the RavenDB server as a zip package from [https://ravendb.net/download](https://ravendb.net/download).
-f1. Extract contents the zip file to a folder on your machine.
+1. Extract contents the zip file to a folder on your machine.
 
 ### Visual Studio
 
@@ -44,7 +44,7 @@ f1. Extract contents the zip file to a folder on your machine.
     1. In Solution Explorer right-click on **Solution HotelManagementSystem** and select **Properties**
     2. Under the **Common Properties** folder select **Startup Project**
     3. Select the **Multiple startup projects** option
-d    4. Change the **Action** for the following projects to **Start**:
+    4. Change the **Action** for the following projects to **Start**:
        - Availability.Api
        - Finance
        - Finance.Api
@@ -79,16 +79,16 @@ You should now have several NServiceBus process hosts running as console applica
 1. In a web browser go to the Hotel Management System home page at [http://localhost:9000](http://localhost:9000 "http://localhost:9000") (or the next available port which is displayed the output of the command).
 
 ## Use Cases
-This system simulates the process someone would go though to book a reservation and stay at a hotel.
+This system simulates the process someone would go though to book a reservation to stay at a hotel.  The details of each function is detailed below.
 
 #### Find a Room
-A guest can enter the dates they want to stay and see what room types are available and their prices.
+A guest can enter the dates they want to stay, see a list of room types that are available and nightly rates.
 
 #### Make a Reservation
-After a guest has selected a room type they can enter their personal information and specify a credit card to reserve a room.
+After a guest has selected a room type they must enter their personal information and specify a credit card for payment.
 
 #### Guest Check in
-Coming soon:  A hotel reception desk employee will be able to find a guest's reservation assign them to a room in the hotel and update the credit card's hold amount.
+Coming soon:  A hotel reception desk employee can find a guest's reservation, assign them to a physical room in the hotel, and place a a new hold on the guest's credit card for the total amount of the stay.
 
 #### Guest Checkout
 Coming soon:  A check-out process will generate a guest's final invoice for their stay and charge the guest's credit card.
