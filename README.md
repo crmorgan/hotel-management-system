@@ -96,6 +96,8 @@ Coming soon:  A check-out process will generate a guest's final invoice for thei
 ## Services
 In the context of this system a *Service* is defined as the technical authority for a business capability and all business rules and data reside in the service.  In this code base a service will typically consist of a UI component, an ASP.NET Web API, a NServiceBus host, and a database.  For more information on service boundaries watch [Finding Service Boundaries – illustrated in healthcare by Udi Dahan](https://vimeo.com/album/3715841/video/113515335)
 
+![Typical Message-Based Architecture](/imgs/typical-message-based-architecture.png)
+
 ### Business Services
 The system consists of the following six services:
 1. Availability
