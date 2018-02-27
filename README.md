@@ -1,6 +1,8 @@
 This is an example of a distributed system built using design practices from
 Udi Dahan's [Advanced Distributed Systems Design Course](https://particular.net/adsd "Advanced Distributed Systems Design Course").  This application uses a microservices-oriented architecture to learn how to build autonomous services using asynchronous message-based communication, composite UI/micro-front ends, and how to define service boundaries around business capabilities.
 
+If you want more information on the architecture and the patterns and practices that were used in building this system check out my blog posts at [The Principled Programmer](http://www.principledprogrammer.com/distributed-systems-series-intro/).
+
 The problem domain is that of a boutique hotel with the main operations of a hotel such as booking, front desk operations and check-out.  The use cases of the domain are detailed in the *Use Cases* section below.  This domain was chosen because it was a homework assignment in the ADSD course and most people are familar with the general process.
 
 ## Setting up your development environment
